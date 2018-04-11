@@ -10,4 +10,15 @@ public class MainController {
 	public String index() {
 		return "main/index";
 	}
+	
+	@RequestMapping( "cart" )
+	public String cart() {
+	    return "cart";
+	}
+	
+	@RequestMapping("product_detail")
+	public String productDetail() {
+	    return "product_detail";
+	}
+	
 }

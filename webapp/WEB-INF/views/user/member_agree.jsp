@@ -1,70 +1,90 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+  pageEncoding="UTF-8"%>
 <html>
 <head>
-	<title>비트닷컴 쇼핑몰</title>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8">
-	<link href="${pageContext.servletContext.contextPath }/assets/css/font.css" rel="stylesheet" type="text/css">
+<title>비트닷컴 쇼핑몰</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<link
+  href="${pageContext.servletContext.contextPath }/assets/css/font.css"
+  rel="stylesheet" type="text/css">
 </head>
-<body style="margin:0">
-<jsp:include page="/WEB-INF/views/include/head.jsp"/>
-<jsp:include page="/WEB-INF/views/include/search.jsp"/>
-<table width="959" border="0" cellspacing="0" cellpadding="0" align="center">
-	<tr><td height="10" colspan="2"></td></tr>
-	<tr>
-		<td height="100%" valign="top">
-			<jsp:include page="/WEB-INF/views/include/navigation.jsp"/>
-		</td>
-		<td width="10"></td>
-		<td valign="top">
+<body style="margin: 0">
+  <jsp:include page="/WEB-INF/views/include/head.jsp" />
+  <jsp:include page="/WEB-INF/views/include/search.jsp" />
+  <table width="959" border="0" cellspacing="0" cellpadding="0"
+    align="center">
+    <tr>
+      <td height="10" colspan="2"></td>
+    </tr>
+    <tr>
+      <td height="100%" valign="top"><jsp:include
+          page="/WEB-INF/views/include/navigation.jsp" /></td>
+      <td width="10"></td>
+      <td valign="top">
+        <!-------------------------------------------------------------------------------------------->
+        <!-- 시작 : 다른 웹페이지 삽입할 부분                                                                                                                                                            -->
+        <!-------------------------------------------------------------------------------------------->
 
-		<!-------------------------------------------------------------------------------------------->	
-		<!-- 시작 : 다른 웹페이지 삽입할 부분                                                                                                                                                            -->
-		<!-------------------------------------------------------------------------------------------->	
 
+        <!--  현재 페이지 자바스크립  -------------------------------------------->
+        <script language="javascript">
+          function CheckAgree() {
+              if (form2.agree.checked == false) {
+                  alert("이용약관 내용에 동의를 체크해 주십시오.");
+                  return;
+              }
+              location.href = "${pageContext.servletContext.contextPath}/member/join";
+          }
+        </script>
 
-			<!--  현재 페이지 자바스크립  -------------------------------------------->
-			<script language = "javascript">
-				function CheckAgree() 
-				{
-					if (form2.agree.checked == false) 
-					{
-						alert("이용약관 내용에 동의를 체크해 주십시오.");
-						return;
-					}
-					location.href = "/user/member_join";
-				}
-			</script>
+        <table border="0" cellpadding="0" cellspacing="0" width="747">
+          <tr>
+            <td height="13"></td>
+          </tr>
+          <tr>
+            <td height="30" align="center">
+              <p>
+                <img
+                  src="${pageContext.servletContext.contextPath }/assets/images/login_title.gif"
+                  width="747" height="30" border="0">
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td height="13"></td>
+          </tr>
+        </table>
 
-			<table border="0" cellpadding="0" cellspacing="0" width="747">
-				<tr><td height="13"></td></tr>
-				<tr>
-					<td height="30" align="center">
-						<p><img src="${pageContext.servletContext.contextPath }/assets/images/login_title.gif" width="747" height="30" border="0"></p>
-					</td>
-				</tr>
-				<tr><td height="13"></td></tr>
-			</table>
+        <table border="0" cellpadding="0" cellspacing="0" width="685"
+          class="cmfont">
+          <tr>
+            <td><img
+              src="${pageContext.servletContext.contextPath }/assets/images/login_title1.gif"
+              width="85" height="15" border="0"></td>
+          </tr>
+          <tr>
+            <td height="10"></td>
+          </tr>
+        </table>
 
-			<table border="0" cellpadding="0" cellspacing="0" width="685" class="cmfont">
-				<tr>
-					<td><img src="${pageContext.servletContext.contextPath }/assets/images/login_title1.gif" width="85" height="15" border="0"></td>
-				</tr>
-				<tr><td height="10"></td></tr>
-			</table>
-
-			<table border="0" cellpadding="5" cellspacing="1" width="685" bgcolor="cccccc">
-				<tr>
-					<td align="center" bgcolor="efefef">
-						<table border="0" cellpadding="0" cellspacing="30" width="100%" bgcolor="white">
-							<tr>
-								<td align="center">
-									<table border="0" cellpadding="0" cellspacing="0" width="100%" class="cmfont">
-										<tr>
-											<td>
-												<p><textarea style="font-size:9pt; letter-spacing:-1px; line-height:18px; border-style:solid;border-width:1px;border-color:DCDCDC; color:464646; background:F6F6F6; width:605px; height:383px;padding:20px;">제1장. 총칙
+        <table border="0" cellpadding="5" cellspacing="1" width="685"
+          bgcolor="cccccc">
+          <tr>
+            <td align="center" bgcolor="efefef">
+              <table border="0" cellpadding="0" cellspacing="30"
+                width="100%" bgcolor="white">
+                <tr>
+                  <td align="center">
+                    <table border="0" cellpadding="0" cellspacing="0"
+                      width="100%" class="cmfont">
+                      <tr>
+                        <td>
+                          <p>
+                            <textarea
+                              style="font-size: 9pt; letter-spacing: -1px; line-height: 18px; border-style: solid; border-width: 1px; border-color: DCDCDC; color: 464646; background: F6F6F6; width: 605px; height: 383px; padding: 20px;">제1장. 총칙
 
 [비트닷컴] 쇼핑몰은 공정거래위원회에서 심의한 표준약관을 사용하고 있습니다
 
@@ -91,105 +111,49 @@
 민사소송법상의 관할법원에 제기합니다.
 
 ②“몰”과 이용자간에 제기된 전자상거래 소송에는 한국법을 적용합니다.
-</textarea></p>
-											</td>
-										</tr>
-										<tr>
-											<td height="30">
-												<!-- form2  시작 --->
-												<form name = "form2">
-												<input type="checkbox" name="agree" value="ok">
-												이용약관 내용에 동의하시면 선택해 주십시오.
-												</form>
-												<!-- form2 끝 --->
-											</td>
-										</tr>
-									</table>
-									
-								</td>
-							</tr>
-						</table>
-					</td>
-				</tr>
-			</table>
-			<table border="0" cellpadding="0" cellspacing="0" width="685" class="cmfont">
-				<tr>
-					<td height="45" align="right">
-						<a href="javascript:CheckAgree()"><img src="${pageContext.servletContext.contextPath }/assets/images/b_agreeok.gif" border="0"></a> 
-						<a href="index.html"><img src="${pageContext.servletContext.contextPath }/assets/images/b_agreeno.gif" border="0"></a>
-					</td>
-				</tr>
-			</table>
+</textarea>
+                          </p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td height="30">
+                          <!-- form2  시작 --->
+                          <form name="form2">
+                            <input type="checkbox" name="agree"
+                              value="ok"> 이용약관 내용에 동의하시면 선택해
+                            주십시오.
+                          </form> <!-- form2 끝 --->
+                        </td>
+                      </tr>
+                    </table>
 
-		<!-------------------------------------------------------------------------------------------->	
-		<!-- 끝 : 다른 웹페이지 삽입할 부분                                                                                                                                                              -->
-		<!-------------------------------------------------------------------------------------------->
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+        <table border="0" cellpadding="0" cellspacing="0" width="685" class="cmfont">
+          <tr>
+            <td height="45" align="right">
+              <a href="javascript:CheckAgree()">
+                <img src="${pageContext.servletContext.contextPath }/assets/images/b_agreeok.gif" border="0">
+              </a>
+              <a href="${pageContext.servletContext.contextPath}">
+                <img src="${pageContext.servletContext.contextPath }/assets/images/b_agreeno.gif" border="0">
+              </a>
+            </td>
+          </tr>
+        </table> <!-------------------------------------------------------------------------------------------->
+        <!-- 끝 : 다른 웹페이지 삽입할 부분                                                                                                                                                              -->
+        <!-------------------------------------------------------------------------------------------->
 
-		</td>
-	</tr>
-</table>
-
-
-<!-- 화면 하단 부분 : 회사정보/회사소개/이용정보/개인보호정책 ... ---------------------------->
-<br><br>
-<table width="959" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
-	<tr> 
-		<td background="${pageContext.servletContext.contextPath }/assets/images/footer_bg.gif" height="11"></td>
-	</tr>
-	<tr><td height="5"></td></tr>
-	<tr> 
-		<td> 
-			<table width="959" border="0" cellspacing="0" cellpadding="0">
-				<tr> 
-					<td valign="top"><a href="index.html"><img src="${pageContext.servletContext.contextPath }/assets/images/footer_logo.gif" border="0"></a></td>
-					<td width="28"></td>
-					<td> 
-						<table border="0" cellspacing="0" cellpadding="0">
-							<tr> 
-								<td> 
-									<table border="0" cellspacing="0" cellpadding="0">
-										<tr> 
-											<td><a href="company.html"><img src="${pageContext.servletContext.contextPath }/assets/images/footer_menu01.gif" border="0"></a></td>
-											<td><img src="${pageContext.servletContext.contextPath }/assets/images/footer_line.gif"></td>
-											<td><a href="useinfo.html"><img src="${pageContext.servletContext.contextPath }/assets/images/footer_menu02.gif" border="0"></a></td>
-											<td><img src="${pageContext.servletContext.contextPath }/assets/images/footer_line.gif"></td>
-											<td><a href="policy.html"><img src="${pageContext.servletContext.contextPath }/assets/images/footer_menu03.gif" border="0"></a></td>
-										</tr>
-									</table>
-								</td>
-							</tr>
-							<tr> 
-								<td><img src="${pageContext.servletContext.contextPath }/assets/images/footer_copyright.gif"></td>
-							</tr>
-						</table>
-					</td>
-					<td align="right" valign="top">
-						<table border="0" cellspacing="0" cellpadding="0">
-							<tr> 
-								<td align="right">
-										<a href="index.html"><img src="${pageContext.servletContext.contextPath }/assets/images/footer_home.gif" border="0"></a>&nbsp
-										<a href="#top"><img src="${pageContext.servletContext.contextPath }/assets/images/footer_top.gif" border="0"></a>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<table border="0" cellspacing="0" cellpadding="0">
-										<tr> 
-											<td><A HREF="http://www.ftc.go.kr/" target="_blank"><img src="${pageContext.servletContext.contextPath }/assets/images/footer_pic1.gif" border=0></A></td>
-											<td><img src="footer_line.gif" width="3" height="42"></td>
-											<td><A HREF="http://www.sgic.co.kr/" target="_blank"><img src="${pageContext.servletContext.contextPath }/assets/images/footer_pic2.gif" border=0></a></td>
-										</tr>
-									</table>
-								</td>
-							<tr> 
-						</table>
-					</td>
-				</tr>
-			</table>
-		</td>
-	</tr>
-</table>
-<br><br>
-<jsp:include page="/WEB-INF/views/include/footer.jsp"/>
+      </td>
+    </tr>
+  </table>
+  
+  <br>
+  <br>
+  <jsp:include page="/WEB-INF/views/include/footer.jsp" />
 </body>
 </html>

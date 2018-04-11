@@ -52,7 +52,7 @@
 				<tr>
 					<td height="30" align="center"><font color="686868">2007-01-02</font></td>
 					<td align="center">
-						<a href="jumun_info.jsp?no=13&page=1"><font color="#0066CC">200701020001</font></a>
+						<a href="/bitmall/jumun/info?no=13&page=1"><font color="#0066CC">200701020001</font></a>
 					</td>
 					<td><font color="686868">파란 브라우스 (외 2)</font></td>
 					<td align="right"><font color="686868">20,000 원</font></td>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="member">
+    <insert id="insert" parameterType="membervo">
+    <![CDATA[
+        insert into member
+        values(null, #{id}, password(#{password}), #{name}, #{birth}, 
+        #{telNumber}, #{cellNumber}, #{address}, #{email}, now(), 0);
+    ]]>
+    </insert>
+    
+    <select id="getMemberCountById" parameterType="string" resultType="integer">
+        <![CDATA[
+            select count(id) as cnt
+            from member
+            where id = #{_parameter}
+        ]]>
+    </select>
+    
+    <select id="getMember" parameterType="membervo" resultType="membervo">
+        <![CDATA[
+            select no, id, name, birth, tel_number as telNumber, cell_number as cellNumber, address, email, reg_date as regDate, classification
+            from member
+            where id=#{id} and password=password(#{password}) 
+        ]]>
+    </select> 
+</mapper>
