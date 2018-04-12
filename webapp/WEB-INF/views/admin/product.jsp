@@ -36,11 +36,11 @@
             <option value="3">Sale</option>
           </select> &nbsp 
           
-          <select name="sel3">
+          <select name="category">
             <option value="0">분류선택</option>
-            <option value="1">바지</option>
-            <option value="2">코트</option>
-            <option value="3">브라우스</option>
+            <c:forEach items="${categoryList}" var="category">
+              <option value="${category.no}">${category.name}</option>            
+            </c:forEach>
           </select> &nbsp 
           
           <select name="sel4">

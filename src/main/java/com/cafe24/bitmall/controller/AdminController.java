@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.cafe24.bitmall.security.Auth;
+import com.cafe24.bitmall.service.CategoryService;
 import com.cafe24.bitmall.service.OptionService;
 import com.cafe24.bitmall.vo.OptionVo;
 import com.cafe24.bitmall.vo.SmallOptionVo;
@@ -19,6 +20,9 @@ import com.cafe24.bitmall.vo.SmallOptionVo;
 public class AdminController {
     @Autowired
     private OptionService optionService;
+    
+    @Autowired
+    private CategoryService categoryService;
     
     @RequestMapping("")
     public String login() {
@@ -31,12 +35,15 @@ public class AdminController {
     }
     
     @RequestMapping("product")
-    public String product() {
+    public String product(Model model) {
+        model.addAttribute("categoryList", categoryService.getCategoryList());
         return "admin/product";
     }
     
     @RequestMapping(value="product/new", method=RequestMethod.GET)
-    public String productNew() {
+    public String productNew(Model model) {
+        model.addAttribute("categoryList", categoryService.getCategoryList());
+        model.addAttribute("optionList", optionService.getOptionList());
         return "admin/product_new";
     }
     
