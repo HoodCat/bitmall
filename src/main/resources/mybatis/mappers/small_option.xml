@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="smalloption">
+    <select id="selectByNo" parameterType="long" resultType="smalloptionvo">
+        <![CDATA[
+            select no, name, option_no as optionNo
+            from small_option
+            where no = #{_parameter}
+        ]]>    
+    </select>
+    
+    <select id="selectByOptionNo" parameterType="long" resultType="smalloptionvo">
+        <![CDATA[
+            select no, name, option_no as optionNo
+            from small_option
+            where option_no = #{_parameter}
+        ]]>
+    </select>
+    
+    <insert id="insert" parameterType="smalloptionvo">
+        <![CDATA[
+            insert into small_option
+            values(null, #{name}, #{optionNo})
+        ]]>
+        <selectKey resultType="long" keyProperty="no" order="AFTER">
+            <![CDATA[
+                select last_insert_id()         
+            ]]>
+        </selectKey>
+    </insert>
+</mapper>

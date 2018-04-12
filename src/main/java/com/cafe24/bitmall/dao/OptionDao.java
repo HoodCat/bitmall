@@ -18,7 +18,15 @@ public class OptionDao {
         return sqlSession.insert("option.insert", optionVo)==1;
     }
     
+    public boolean update(OptionVo optionVo) {
+        return sqlSession.update("option.update", optionVo)==1;
+    }
+    
     public List<OptionVo> selectList() {
         return sqlSession.selectList("option.selectList");
+    }
+    
+    public OptionVo selectOption(Long no) {
+        return sqlSession.selectOne("option.selectByNo", no);
     }
 }

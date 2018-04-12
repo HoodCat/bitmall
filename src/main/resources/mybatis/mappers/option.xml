@@ -9,10 +9,24 @@
         ]]>
     </insert>
     
+    <update id="update" parameterType="optionvo">
+        <![CDATA[
+            update `option` set name=#{name} where no=#{no}
+        ]]>    
+    </update>
+    
     <select id="selectList" resultType="optionvo">
         <![CDATA[
             select no, name
             from `option`
+        ]]>
+    </select>
+    
+    <select id="selectByNo" parameterType="long" resultType="optionvo">
+        <![CDATA[
+            select no, name
+            from `option`
+            where no = #{_parameter}
         ]]>
     </select>
 </mapper>

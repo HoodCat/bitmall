@@ -45,10 +45,11 @@
           <td width="50" align="center">${status.index + 1}</td>
           <td width="200" align="left">${option.name}</td>
           <td width="100" align="center">
-            <a href="option/edit?no=${option.no}">수정</a>/
+            <a href="option/edit/${option.no}">수정</a>/
             <a href="option/delete?no=${option.no}">삭제</a></td>
           <td width="100" align="center">
-            <a href="options?no=${option.no}">소옵션편집</a>
+            <a href="option/${option.no}">소옵션편집</a>
+            <%-- <a href="options?no=${option.no}">소옵션편집</a> --%>
           </td>
         </tr>
       </c:forEach>

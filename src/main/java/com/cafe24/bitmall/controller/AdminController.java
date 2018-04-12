@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -61,10 +62,43 @@ public class AdminController {
         return "redirect:/admin/option";
     }
     
+    @RequestMapping(value="option/edit/{optionNo}", method=RequestMethod.GET)
+    public String optionEdit(
+            @PathVariable(value="optionNo") Long optionNo,
+            Model model) {
+        
+        model.addAttribute("option", optionService.getOption(optionNo));
+        return "admin/opt_edit";
+    }
+    
+    @RequestMapping(value="option/edit/{optionNo}", method=RequestMethod.POST)
+    public String optionEdit(
+            @PathVariable(value="optionNo") Long optionNo,
+            @ModelAttribute OptionVo optionVo,
+            Model model) {
+        optionVo.setNo(optionNo);
+        optionService.modifyOptionName(optionVo);
+        return "redirect:/admin/option";
+    }
+    
+    
     /* 소옵션 */
-    @RequestMapping("options")
-    public String options() {
+    @RequestMapping("option/{optionNo}")
+    public String options(
+            @PathVariable(value="optionNo") Long no,
+            Model model) {
+        model.addAttribute("option", optionService.getOption(no));
+        model.addAttribute("sOptionList", optionService.getSmallOptionList(no));
         return "admin/opts";
+    }
+    
+    @RequestMapping("option/{optionNo}/edit/{sOptionNo}")
+    public String optionsEdit(
+            @PathVariable(value="optionNo") Long optionNo,
+            @PathVariable(value="sOptionNo") Long sOptionNo,
+            Model model) {
+            model.addAttribute("sOption",optionService.getSmallOption(sOptionNo));
+        return "admin/opts_edit";
     }
     
     @RequestMapping("faq")
