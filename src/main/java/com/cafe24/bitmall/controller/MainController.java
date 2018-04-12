@@ -11,6 +11,16 @@ public class MainController {
 		return "main/index";
 	}
 	
+	@RequestMapping("qa")
+	public String qa() {
+	    return "qa";
+	}
+	
+	@RequestMapping("faq")
+	public String faq() {
+	    return "faq";
+	}
+	
 	@RequestMapping( "cart" )
 	public String cart() {
 	    return "cart";

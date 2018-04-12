@@ -53,7 +53,7 @@
         
         <td align="left" width="120" valign="bottom">
           <input type="submit" value="검색"> &nbsp; 
-          <a href="product_new">
+          <a href="product/new">
             <input type="button" value="새상품">
           </a>
         </td>
@@ -95,7 +95,7 @@
       <td width="50" align="center">판매중</td>
       <td width="120" align="center">&nbsp New Hit Sale(10%)</td>
       <td width="80" align="center">
-        <a href="product_edit.jsp">수정</a>/
+        <a href="product/edit">수정</a>/
         <a href="#">삭제</a>
       </td>
     </tr>

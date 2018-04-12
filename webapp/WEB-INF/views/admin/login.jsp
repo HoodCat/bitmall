@@ -23,7 +23,7 @@
   
   <form name="form1" action="${pageContext.servletContext.contextPath}/admin/product" method="post">
     <input type="hidden" name="no" value="${authMember.no}">
-    <table bordercolor="purple" border width='330' cellpadding='4' cellspacing='0'>
+    <table bordercolor="purple" border width='330' cellpadding='4' cellspacing='0' align='center'>
       <tr>
         <td>
           <table bgcolor="#feffd7" border="0" width="330" cellpadding='0' cellspacing='0'>
