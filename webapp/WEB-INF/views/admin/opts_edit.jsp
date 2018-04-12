@@ -14,7 +14,8 @@
     <br>
     <jsp:include page="/WEB-INF/views/include/admin-menu.jsp" />
     <hr width='900' size='3'>
-    <form name="form1" method="post" action="opts_update.html">
+    
+    <form name="form1" method="post" action="">
       <input type="hidden" name="no1" value="1">
       <input type="hidden" name="no2" value="1">
       <table width="500" border="1" cellspacing="0" bordercolordark="white" bordercolorlight="black">

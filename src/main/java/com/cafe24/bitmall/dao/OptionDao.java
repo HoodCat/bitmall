@@ -14,12 +14,20 @@ public class OptionDao {
     @Autowired
     private SqlSession sqlSession;
     
+    public Long getTotalCount() {
+        return sqlSession.selectOne("option.selectCountTotal");
+    }
+    
     public boolean insert(OptionVo optionVo) {
         return sqlSession.insert("option.insert", optionVo)==1;
     }
     
     public boolean update(OptionVo optionVo) {
         return sqlSession.update("option.update", optionVo)==1;
+    }
+    
+    public boolean delete(OptionVo optionVo) {
+        return sqlSession.delete("option.delete", optionVo)==1;
     }
     
     public List<OptionVo> selectList() {

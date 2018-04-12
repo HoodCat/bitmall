@@ -27,12 +27,20 @@ public class OptionService {
         return optionDao.update(optionVo);
     }
     
+    public boolean deleteOption(OptionVo optionVo) {
+        return optionDao.delete(optionVo);
+    }
+    
     public List<OptionVo> getOptionList() {
         return optionDao.selectList();
     }
     
     public OptionVo getOption(Long no) {
         return optionDao.selectOption(no);
+    }
+    
+    public Long getTotalCount() {
+        return optionDao.getTotalCount();
     }
     
     public List<SmallOptionVo> getSmallOptionList(Long optionNo) {
@@ -43,9 +51,22 @@ public class OptionService {
         return sOptionDao.selectSmallOption(sOptionNo);
     }
     
+    public SmallOptionVo getSmallOption(SmallOptionVo sOptionVo) {
+        return sOptionDao.selectSmallOption(sOptionVo);
+    }
+    
     public SmallOptionVo addSmallOption(SmallOptionVo sOptionVo) {
         sOptionDao.insert(sOptionVo);
         System.out.println(sOptionVo);
         return sOptionVo;
     }
+    
+    public boolean modifySmallOption(SmallOptionVo sOptionVo) {
+        return sOptionDao.update(sOptionVo);
+    }
+    
+    public boolean deleteSmallOption(SmallOptionVo sOptionVo) {
+        return sOptionDao.delete(sOptionVo);
+    }
+    
 }

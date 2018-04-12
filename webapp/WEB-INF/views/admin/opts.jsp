@@ -18,13 +18,14 @@
         $("#add-button").css({"display":"none"});
         var html = "<tr id='add-row' bgcolor='#F2F2F2' height='20'>" + 
                    "<td width='100' align='center'></td>" + 
-                   "<td width='300' align='left'><input id='option-name' type='text'/></td>" +
-                   "<td width='100' align='center'><a id='add' href='#'>등록</a>/<a id='cancel' href='#'>취소</a></td>" + 
+                   "<td width='300' align='left'><input id='option-name' type='text' style='width:100%'/></td>" +
+                   "<td width='100' align='center'><a id='add' href=''>등록</a>/<a id='cancel' href=''>취소</a></td>" + 
                    "</tr>";
         $("#small_option tr:first").after(html);
     };
     
     $(document).on("click", "#add", function(event){
+        event.preventDefault();
         console.log("추가");
         $.ajax({
             "url":"${pageContext.servletContext.contextPath}/admin/api/small_option/insert",
@@ -49,6 +50,7 @@
     });
     
     $(document).on("click", "#cancel", function(event){
+        event.preventDefault();
         $("#add-button").css({"display":""});
         $("#add-row").remove();
     });
@@ -91,7 +93,7 @@
           <td width="300" align="left">${smallOption.name}</td>
           <td width="100" align="center">
             <a href="${option.no}/edit/${smallOption.no}">수정</a>/
-            <a href="">삭제</a>
+            <a href="${option.no}/delete/${smallOption.no}">삭제</a>
           </td>
         </tr>
       </c:forEach>

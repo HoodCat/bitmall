@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.cafe24.bitmall.security.Auth;
 import com.cafe24.bitmall.service.OptionService;
 import com.cafe24.bitmall.vo.OptionVo;
+import com.cafe24.bitmall.vo.SmallOptionVo;
 
 @Auth
 @Controller
@@ -47,6 +48,7 @@ public class AdminController {
     /* 옵션 */
     @RequestMapping("option")
     public String option(Model model) {
+        model.addAttribute("totalCount", optionService.getTotalCount());
         model.addAttribute("optionList", optionService.getOptionList());
         return "admin/opt";
     }
@@ -81,6 +83,14 @@ public class AdminController {
         return "redirect:/admin/option";
     }
     
+    @RequestMapping(value="option/delete/{optionNo}", method=RequestMethod.GET) 
+    public String optionDelete(
+            @PathVariable(value="optionNo") Long no) {
+        OptionVo optionVo = new OptionVo();
+        optionVo.setNo(no);
+        optionService.deleteOption(optionVo);
+        return "redirect:/admin/option";
+    }
     
     /* 소옵션 */
     @RequestMapping("option/{optionNo}")
@@ -92,13 +102,50 @@ public class AdminController {
         return "admin/opts";
     }
     
-    @RequestMapping("option/{optionNo}/edit/{sOptionNo}")
+    @RequestMapping(value="option/{optionNo}/edit/{sOptionNo}", method=RequestMethod.GET)
     public String optionsEdit(
             @PathVariable(value="optionNo") Long optionNo,
             @PathVariable(value="sOptionNo") Long sOptionNo,
             Model model) {
-            model.addAttribute("sOption",optionService.getSmallOption(sOptionNo));
+            SmallOptionVo paramVo = new SmallOptionVo();
+            paramVo.setNo(sOptionNo);
+            paramVo.setOptionNo(optionNo);
+            
+            SmallOptionVo sOptionVo = optionService.getSmallOption(paramVo);
+            if(sOptionVo == null) {
+                return "redirect:/admin/option";
+            }
+            model.addAttribute("sOption", sOptionVo);
         return "admin/opts_edit";
+    }
+    
+    @RequestMapping(value="option/{optionNo}/edit/{sOptionNo}", method=RequestMethod.POST)
+    public String optionsEdit(
+            @PathVariable(value="optionNo") Long optionNo,
+            @PathVariable(value="sOptionNo") Long sOptionNo,
+            @ModelAttribute SmallOptionVo sOptionVo,
+            Model model) {
+            
+            sOptionVo.setNo(sOptionNo);
+            sOptionVo.setOptionNo(optionNo);
+            
+            System.out.println(optionService.modifySmallOption(sOptionVo));
+        
+        return "redirect:/admin/option/" + optionNo;
+    }
+    
+    @RequestMapping(value="option/{optionNo}/delete/{sOptionNo}", method=RequestMethod.GET)
+    public String optionsDelete(
+            @PathVariable(value="optionNo") Long optionNo,
+            @PathVariable(value="sOptionNo") Long sOptionNo,
+            Model model) {
+            SmallOptionVo sOptionVo = new SmallOptionVo();
+            sOptionVo.setNo(sOptionNo);
+            sOptionVo.setOptionNo(optionNo);
+            
+            System.out.println(optionService.deleteSmallOption(sOptionVo));
+        
+        return "redirect:/admin/option/" + optionNo;
     }
     
     @RequestMapping("faq")

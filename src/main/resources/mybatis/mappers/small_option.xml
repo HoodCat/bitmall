@@ -2,6 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="smalloption">
+
+    <select id="select" parameterType="smalloptionvo" resultType="smalloptionvo">
+        <![CDATA[
+            select no, name, option_no as optionNo
+            from small_option
+            where no = #{no} and option_no = #{optionNo}
+        ]]>    
+    </select>
+
     <select id="selectByNo" parameterType="long" resultType="smalloptionvo">
         <![CDATA[
             select no, name, option_no as optionNo
@@ -15,6 +24,7 @@
             select no, name, option_no as optionNo
             from small_option
             where option_no = #{_parameter}
+            order by name
         ]]>
     </select>
     
@@ -29,4 +39,19 @@
             ]]>
         </selectKey>
     </insert>
+    
+    <update id="update" parameterType="smalloptionvo">
+        <![CDATA[
+            update small_option
+            set name = #{name}
+            where no = #{no} and option_no= #{optionNo}
+        ]]>
+    </update>
+    
+    <delete id="delete">
+        <![CDATA[
+            delete from `small_option`
+            where no=#{no} and option_no=#{optionNo}        
+        ]]>
+    </delete>
 </mapper>

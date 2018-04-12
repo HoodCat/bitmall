@@ -8,6 +8,19 @@
     <title>쇼핑몰 관리자 홈페이지</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <link href="${pageContext.servletContext.contextPath}/assets/css/font.css" rel="stylesheet" type="text/css">
+    <script src="${pageContext.servletContext.contextPath}/assets/jquery/jquery-1.9.0.js" type="text/javascript"></script>    
+    <script type="text/javascript">
+    $(function(){
+        $("#delete").click(function(event){
+            var isDelete = confirm("정말 삭제하시겠습니까?");
+            
+            if(isDelete == false){
+                event.preventDefault();
+                return;
+            }
+        });
+    });
+    </script>
   </head>
   
   <body bgcolor="white" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
@@ -18,7 +31,7 @@
       <tr>
         <td align="left" width="250" height="50" valign="bottom">
           &nbsp 옵션수 : 
-          <font color="#FF0000">2</font>
+          <font color="#FF0000">${totalCount}</font>
         </td>
         
         <td align="right" width="200" height="50" valign="bottom">
@@ -46,7 +59,7 @@
           <td width="200" align="left">${option.name}</td>
           <td width="100" align="center">
             <a href="option/edit/${option.no}">수정</a>/
-            <a href="option/delete?no=${option.no}">삭제</a></td>
+            <a id="delete" href="option/delete/${option.no}">삭제</a></td>
           <td width="100" align="center">
             <a href="option/${option.no}">소옵션편집</a>
             <%-- <a href="options?no=${option.no}">소옵션편집</a> --%>

@@ -2,6 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="option">
+    <select id="selectCountTotal" resultType="long">
+        <![CDATA[
+            select count(no)
+            from `option`
+        ]]>
+    </select>
+
     <insert id="insert" parameterType="optionvo">
         <![CDATA[
             insert into `option`
@@ -14,6 +21,12 @@
             update `option` set name=#{name} where no=#{no}
         ]]>    
     </update>
+    
+    <delete id="delete" parameterType="optionvo">
+        <![CDATA[
+            delete from `option` where no=#{no}
+        ]]>
+    </delete>
     
     <select id="selectList" resultType="optionvo">
         <![CDATA[
