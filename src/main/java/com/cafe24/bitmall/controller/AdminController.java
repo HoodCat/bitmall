@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.cafe24.bitmall.security.Auth;
 import com.cafe24.bitmall.service.CategoryService;
 import com.cafe24.bitmall.service.GoodsService;
+import com.cafe24.bitmall.service.IconService;
 import com.cafe24.bitmall.service.OptionService;
 import com.cafe24.bitmall.service.StatusService;
 import com.cafe24.bitmall.vo.GoodsVo;
@@ -36,6 +37,9 @@ public class AdminController {
     @Autowired
     private GoodsService goodsService;
     
+    @Autowired
+    private IconService iconSerivce;
+    
     @RequestMapping("")
     public String login() {
         return "admin/login";
@@ -58,6 +62,7 @@ public class AdminController {
         model.addAttribute("categoryList", categoryService.getCategoryList());
         model.addAttribute("optionList", optionService.getOptionList());
         model.addAttribute("statusList", statusService.getStatusList());
+        model.addAttribute("iconList", iconSerivce.getIconList());
         return "admin/product_new";
     }
     
@@ -65,14 +70,12 @@ public class AdminController {
     public String productNew(
             @ModelAttribute GoodsVo goodsvo,
             @RequestParam(value="option") Long[] options,
-            @RequestParam(value="icon", required=false, defaultValue="") String[] icons,
+            @RequestParam(value="check-icon", required=false, defaultValue="") Long[] icons,
             @RequestParam(value="imageFile") MultipartFile[] imageFiles,
             Model model) {
         
-        goodsService.addGoods(goodsvo, options, icons, imageFiles);
-        /*for(String value: checkedIcon) {
-            System.out.println(value);
-        }*/
+//        goodsService.addGoods(goodsvo, options, icons, imageFiles);
+        
         /*
         System.out.println(multipartFile.length);
         for(MultipartFile file:multipartFile) {

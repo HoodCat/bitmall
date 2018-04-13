@@ -17,7 +17,7 @@ public class GoodsService {
     @Autowired
     private GoodsOptionDao goodsOptionDao;
     
-    public boolean addGoods(GoodsVo goodsVo, Long[] options, String[] icons, MultipartFile[] imageFiles) {
+    public boolean addGoods(GoodsVo goodsVo, Long[] options, Long[] icons, MultipartFile[] imageFiles) {
         boolean result = goodsDao.insert(goodsVo);
         
         for(Long option: options) {

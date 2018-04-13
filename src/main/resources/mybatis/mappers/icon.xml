@@ -9,4 +9,12 @@
        from name=#{name}
    ]]>
    </select>
+   
+   <select id="selectList" resultType="iconvo">
+   <![CDATA[
+       select no, name, icon_image as iconImage
+       from icon
+       order by no asc
+   ]]>
+   </select>
 </mapper>
