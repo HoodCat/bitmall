@@ -74,7 +74,7 @@ public class AdminController {
             @RequestParam(value="imageFile") MultipartFile[] imageFiles,
             Model model) {
         
-//        goodsService.addGoods(goodsvo, options, icons, imageFiles);
+        goodsService.addGoods(goodsvo, options, icons, imageFiles);
         
         /*
         System.out.println(multipartFile.length);
