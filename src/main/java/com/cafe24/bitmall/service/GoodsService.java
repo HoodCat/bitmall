@@ -6,8 +6,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.cafe24.bitmall.dao.GoodsDao;
 import com.cafe24.bitmall.dao.GoodsIconDao;
+import com.cafe24.bitmall.dao.GoodsImageDao;
 import com.cafe24.bitmall.dao.GoodsOptionDao;
 import com.cafe24.bitmall.vo.GoodsIconVo;
+import com.cafe24.bitmall.vo.GoodsImageVo;
 import com.cafe24.bitmall.vo.GoodsOptionVo;
 import com.cafe24.bitmall.vo.GoodsVo;
 
@@ -21,6 +23,12 @@ public class GoodsService {
     
     @Autowired
     private GoodsIconDao goodsIconDao;
+    
+    @Autowired
+    private FileUploadService fileUploadService;
+    
+    @Autowired
+    private GoodsImageDao goodsImageDao;
     
     
     public boolean addGoods(GoodsVo goodsVo, Long[] options, Long[] icons, MultipartFile[] imageFiles) {
@@ -38,6 +46,18 @@ public class GoodsService {
             gIconVo.setGoodsNo(goodsVo.getNo());
             gIconVo.setIconNo(icon);
             goodsIconDao.insert(gIconVo);
+        }
+        
+        for(MultipartFile imageFile: imageFiles) {
+            if(imageFile.isEmpty()) {
+                break;
+            }
+            
+            String imagePath = fileUploadService.restore(imageFile);
+            GoodsImageVo gImageVo = new GoodsImageVo();
+            gImageVo.setGoodsNo(goodsVo.getNo()); 
+            gImageVo.setPath(imagePath);
+            goodsImageDao.insert(gImageVo);
         }
         
         return result;

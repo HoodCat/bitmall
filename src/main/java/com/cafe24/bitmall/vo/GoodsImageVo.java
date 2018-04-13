@@ -2,7 +2,7 @@ package com.cafe24.bitmall.vo;
 
 public class GoodsImageVo {
     private Long no;
-    private Long goods_no;
+    private Long goodsNo;
     private String path;
     
     public Long getNo() {
@@ -11,11 +11,11 @@ public class GoodsImageVo {
     public void setNo(Long no) {
         this.no = no;
     }
-    public Long getGoods_no() {
-        return goods_no;
+    public Long getGoodsNo() {
+        return goodsNo;
     }
-    public void setGoods_no(Long goods_no) {
-        this.goods_no = goods_no;
+    public void setGoodsNo(Long goodsNo) {
+        this.goodsNo = goodsNo;
     }
     public String getPath() {
         return path;
@@ -23,10 +23,10 @@ public class GoodsImageVo {
     public void setPath(String path) {
         this.path = path;
     }
-    
+
     @Override
     public String toString() {
-        return "GoodsImageVo [no=" + no + ", goods_no=" + goods_no + ", path=" + path + "]";
+        return "GoodsImageVo [no=" + no + ", goodsNo=" + goodsNo + ", path=" + path + "]";
     }
     
 }

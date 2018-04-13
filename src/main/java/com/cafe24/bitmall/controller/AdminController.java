@@ -76,18 +76,6 @@ public class AdminController {
         
         goodsService.addGoods(goodsvo, options, icons, imageFiles);
         
-        /*
-        System.out.println(multipartFile.length);
-        for(MultipartFile file:multipartFile) {
-            System.out.println(file.isEmpty());
-        }
-        */
-        /*
-        for(String option: options) {
-            System.out.println(option);
-        }
-        */
-        
         return "redirect:/admin/product";
     }
     

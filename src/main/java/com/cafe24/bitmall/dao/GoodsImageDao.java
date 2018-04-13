@@ -12,6 +12,6 @@ public class GoodsImageDao {
     private SqlSession sqlSession;
     
     public boolean insert(GoodsImageVo vo) {
-        return sqlSession.insert("", vo) == 1;
+        return sqlSession.insert("goodsimage.insert", vo) == 1;
     }
 }
