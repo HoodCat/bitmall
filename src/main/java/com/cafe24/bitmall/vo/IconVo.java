@@ -1,9 +1,9 @@
 package com.cafe24.bitmall.vo;
 
-public class CategoryVo {
+public class IconVo {
     private Long no;
     private String name;
-    private String imagePath;
+    private String iconImage;
     
     public Long getNo() {
         return no;
@@ -17,16 +17,16 @@ public class CategoryVo {
     public void setName(String name) {
         this.name = name;
     }
-    public String getImagePath() {
-        return imagePath;
+    public String getIconImage() {
+        return iconImage;
     }
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
+    public void setIconImage(String iconImage) {
+        this.iconImage = iconImage;
     }
     
     @Override
     public String toString() {
-        return "CategoryVo [no=" + no + ", name=" + name + ", imagePath=" + imagePath + "]";
+        return "IconVo [no=" + no + ", name=" + name + ", iconImage=" + iconImage + "]";
     }
     
 }

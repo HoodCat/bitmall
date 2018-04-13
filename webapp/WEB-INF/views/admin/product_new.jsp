@@ -8,114 +8,136 @@
     <title>쇼핑몰 관리자 홈페이지</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <link href="${pageContext.servletContext.contextPath }/assets/css/font.css" rel="stylesheet" type="text/css">
+    <script src="${pageContext.servletContext.contextPath }/assets/jquery/jquery-1.9.0.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    var imageCount = 0;
+    var addImageRow = function() {
+        imageCount++;
+        var imageInput = "<b>이미지" + imageCount + "</b>:" +
+                         "<input class='current' type='file' name='imageFile' size='30' value='찾아보기'><br>";
+        
+        $("#images input.current").removeClass();
+        $("#images").append(imageInput);
+    }
+    
+    $(function(){
+        addImageRow();
+    });
+    
+    $(document).on("change", "#images input.current", function(){
+        addImageRow();
+    });
+    </script>
   </head>
   
   <body bgcolor="white" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
     <br>
     <jsp:include page="/WEB-INF/views/include/admin-menu.jsp" />
     <hr width='900' size='3'>
-    <table width="800" border="1" cellspacing="0" cellpadding="3" bordercolordark="white" bordercolorlight="black">
-      <tr height="23">
-        <td width="100" bgcolor="#CCCCCC" align="center">상품분류</td>
-        <td width="700" bgcolor="#F2F2F2">
-          <select name="menu">
-            <option value="0" selected>상품분류를 선택하세요</option>
-            <c:forEach items="${categoryList}" var="category">
-              <option value="${category.no}">${category.name}</option>
-            </c:forEach>
-          </select>
-        </td>
-      </tr>
-      
-      <tr height="23">
-        <td width="100" bgcolor="#CCCCCC" align="center">상품코드</td>
-        <td width="700" bgcolor="#F2F2F2">
-          <input type="text" name="code" value="" size="20" maxlength="20">
-        </td>
-      </tr>
-      
-      <tr>
-        <td width="100" bgcolor="#CCCCCC" align="center">상품명</td>
-        <td width="700" bgcolor="#F2F2F2">
-          <input type="text" name="name" value="" size="60" maxlength="60">
-        </td>
-      </tr>
-      
-      <tr>
-        <td width="100" bgcolor="#CCCCCC" align="center">제조사</td>
-        <td width="700" bgcolor="#F2F2F2">
-          <input type="text" name="coname" value="" size="30" maxlength="30">
-        </td>
-      </tr>
-      
-      <tr>
-        <td width="100" bgcolor="#CCCCCC" align="center">판매가</td>
-        <td width="700" bgcolor="#F2F2F2">
-          <input type="text" name="price" value="" size="12" maxlength="12"> 원
-        </td>
-      </tr>
-      
-      <tr>
-        <td width="100" bgcolor="#CCCCCC" align="center">옵션</td>
-        <td width="700" bgcolor="#F2F2F2">
-          <select name="opt1">
-            <option value="0" selected>옵션선택</option>
-            <c:forEach items="${optionList}" var="option">
-              <option value="${option.no}">${option.name}</option>
-            </c:forEach>
-          </select> &nbsp; &nbsp; 
-          <select name="opt2">
+    <form name="form1" method="post" action="new" enctype="multipart/form-data">
+    
+      <table width="800" border="1" cellspacing="0" cellpadding="3" bordercolordark="white" bordercolorlight="black">
+        <tr height="23">
+          <td width="100" bgcolor="#CCCCCC" align="center">상품분류</td>
+          <td width="700" bgcolor="#F2F2F2">
+            <select name="menu">
+              <option value="0" selected>상품분류를 선택하세요</option>
+              <c:forEach items="${categoryList}" var="category">
+                <option value="${category.no}">${category.name}</option>
+              </c:forEach>
+            </select>
+          </td>
+        </tr>
+        
+        <tr height="23">
+          <td width="100" bgcolor="#CCCCCC" align="center">상품코드</td>
+          <td width="700" bgcolor="#F2F2F2">
+            <input type="text" name="code" value="" size="20" maxlength="20">
+          </td>
+        </tr>
+        
+        <tr>
+          <td width="100" bgcolor="#CCCCCC" align="center">상품명</td>
+          <td width="700" bgcolor="#F2F2F2">
+            <input type="text" name="name" value="" size="60" maxlength="60">
+          </td>
+        </tr>
+        
+        <tr>
+          <td width="100" bgcolor="#CCCCCC" align="center">제조사</td>
+          <td width="700" bgcolor="#F2F2F2">
+            <input type="text" name="coname" value="" size="30" maxlength="30">
+          </td>
+        </tr>
+        
+        <tr>
+          <td width="100" bgcolor="#CCCCCC" align="center">판매가</td>
+          <td width="700" bgcolor="#F2F2F2">
+            <input type="text" name="price" value="" size="12" maxlength="12"> 원
+          </td>
+        </tr>
+        
+        <tr>
+          <td width="100" bgcolor="#CCCCCC" align="center">옵션</td>
+          <td width="700" bgcolor="#F2F2F2">
+            <select name="option">
               <option value="0" selected>옵션선택</option>
               <c:forEach items="${optionList}" var="option">
                 <option value="${option.no}">${option.name}</option>
               </c:forEach>
-          </select> &nbsp; &nbsp;
-        </td>
-      </tr>
+            </select> &nbsp; &nbsp; 
+            <select name="option">
+                <option value="0" selected>옵션선택</option>
+                <c:forEach items="${optionList}" var="option">
+                  <option value="${option.no}">${option.name}</option>
+                </c:forEach>
+            </select> &nbsp; &nbsp;
+          </td>
+        </tr>
+        
+        <tr>
+          <td width="100" bgcolor="#CCCCCC" align="center">제품설명</td>
+          <td width="700" bgcolor="#F2F2F2">
+            <textarea name="content"rows="10" cols="80"></textarea>
+          </td>
+        </tr>
+        
+        <tr>
+          <td width="100" bgcolor="#CCCCCC" align="center">상품상태</td>
+          <td width="700" bgcolor="#F2F2F2">
+            <c:forEach items="${statusList}" var="status">
+              <input type="radio" name="status" value="${status.no}"> ${status.name}
+            </c:forEach>
+          </td>
+        </tr>
+        
+        <tr>
+          <td width="100" bgcolor="#CCCCCC" align="center">아이콘</td>
+          <td width="700" bgcolor="#F2F2F2">
+            <input type="checkbox" name="icon" value="New"> New &nbsp;&nbsp; 
+            <input type="checkbox" name="icon" value="Hit"> Hit &nbsp;&nbsp;
+            <input type="checkbox" name="icon" value="Sale" onclick="form1.discount.disabled=!form1.discount.disabled;"> Sale &nbsp;&nbsp 할인율 : 
+            <input type="text" name="discount" value="0" size="3" maxlength="3" disabled> %
+          </td>
+        </tr>
+        
+        <tr>
+          <td width="100" bgcolor="#CCCCCC" align="center">이미지</td>
+          <td id="images" width="700" bgcolor="#F2F2F2"></td>
+        </tr>
+      </table>
+      <br>
       
-      <tr>
-        <td width="100" bgcolor="#CCCCCC" align="center">제품설명</td>
-        <td width="700" bgcolor="#F2F2F2">
-          <textarea name="content"rows="10" cols="80"></textarea>
-        </td>
-      </tr>
+      <table width="800" border="0" cellspacing="0" cellpadding="7">
+        <tr>
+          <td align="center"><input type="submit" value="등록하기"> &nbsp;&nbsp;
+            <a href="product.jsp">
+              <input type="button" value="이전화면">
+            </a>
+          </td>
+        </tr>
+      </table>
       
-      <tr>
-        <td width="100" bgcolor="#CCCCCC" align="center">상품상태</td>
-        <td width="700" bgcolor="#F2F2F2">
-          <c:forEach items="${statusList}" var="status">
-            <input type="radio" name="status" value="${status.no}"> ${status.name}
-          </c:forEach>
-        </td>
-      </tr>
-      
-      <tr>
-        <td width="100" bgcolor="#CCCCCC" align="center">아이콘</td>
-        <td width="700" bgcolor="#F2F2F2"><input type="checkbox"
-          name="icon_new" value="1"> New &nbsp;&nbsp <input
-          type="checkbox" name="icon_hit" value="1"> Hit
-          &nbsp;&nbsp <input type="checkbox" name="icon_sale" value="1"
-          onclick="form1.discount.disabled=!form1.discount.disabled;">
-          Sale &nbsp;&nbsp 할인율 : <input type="text" name="discount"
-          value="0" size="3" maxlength="3" disabled> %</td>
-      </tr>
-      <tr>
-        <td width="100" bgcolor="#CCCCCC" align="center">이미지</td>
-        <td width="700" bgcolor="#F2F2F2"><b>이미지1</b>: <input
-          type="file" name="file1" size="30" value="찾아보기"><br>
-          <b>이미지2</b>: <input type="file" name="file2" size="30"
-          value="찾아보기"><br> <b>이미지3</b>: <input type="file"
-          name="file3" size="30" value="찾아보기"><br></td>
-      </tr>
-    </table>
-    <br>
-    <table width="800" border="0" cellspacing="0" cellpadding="7">
-      <tr>
-        <td align="center"><input type="submit" value="등록하기">
-          &nbsp;&nbsp <a href="product.jsp"><input type="button"
-            value="이전화면"></a></td>
-      </tr>
-    </table>
     </form>
   </body>
 </html>

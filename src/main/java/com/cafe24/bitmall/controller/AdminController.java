@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.cafe24.bitmall.security.Auth;
 import com.cafe24.bitmall.service.CategoryService;
@@ -50,6 +52,30 @@ public class AdminController {
         model.addAttribute("optionList", optionService.getOptionList());
         model.addAttribute("statusList", statusService.getStatusList());
         return "admin/product_new";
+    }
+    
+    @RequestMapping(value="product/new", method=RequestMethod.POST)
+    public String productNew(
+            @RequestParam(value="option") String[] options,
+            @RequestParam(value="icon", required=false, defaultValue="") String[] checkedIcon,
+            @RequestParam(value="imageFile") MultipartFile[] multipartFile,
+            Model model) {
+        
+        /*for(String value: checkedIcon) {
+            System.out.println(value);
+        }*/
+        /*
+        System.out.println(multipartFile.length);
+        for(MultipartFile file:multipartFile) {
+            System.out.println(file.isEmpty());
+        }
+        */
+        
+        for(String option: options) {
+            System.out.println(option);
+        }
+        
+        return "redirect:/admin/product";
     }
     
     @RequestMapping("jumun")

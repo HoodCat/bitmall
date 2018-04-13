@@ -4,7 +4,7 @@
 <mapper namespace="category">
     <select id="select" parameterType="categoryvo" resultType="categoryvo">
     <![CDATA[
-        select no, name
+        select no, name, image_path as imagePath
         from category
         where no=#{no}
     ]]>  
@@ -12,7 +12,7 @@
     
     <select id="selectList" resultType="categoryvo">
     <![CDATA[
-        select no, name
+        select no, name, image_path as imagePath
         from category
     ]]>  
     </select>

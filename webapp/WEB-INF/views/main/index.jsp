@@ -51,8 +51,8 @@
                       <a href="${pageContext.servletContext.contextPath}/product_detail?no=1">
                         <font color="444444">상품명1</font>
                       </a>&nbsp;
-                      <img src="${pageContext.servletContext.contextPath }/assets/images/i_hit.gif" align="absmiddle" vspace="1">
-                      <img src="${pageContext.servletContext.contextPath }/assets/images/i_new.gif" align="absmiddle" vspace="1">
+                      <img src="${pageContext.servletContext.contextPath}/assets/images/i_hit.gif" align="absmiddle" vspace="1">
+                      <img src="${pageContext.servletContext.contextPath}/assets/images/i_new.gif" align="absmiddle" vspace="1">
                     </td>
                   </tr>
                   
@@ -86,8 +86,7 @@
                   </tr>
                   
                   <tr>
-                    <td height="20" align="center"><strike>89,000
-                        원</strike><br>
+                    <td height="20" align="center"><strike>89,000 원</strike><br>
                     <b>70,000 원</b></td>
                   </tr>
                 </table>

@@ -8,6 +8,7 @@
         <typeAlias alias="smalloptionvo" type="com.cafe24.bitmall.vo.SmallOptionVo" />
         <typeAlias alias="categoryvo" type="com.cafe24.bitmall.vo.CategoryVo" />
         <typeAlias alias="statusvo" type="com.cafe24.bitmall.vo.StatusVo" />
+        <typeAlias alias="iconvo" type="com.cafe24.bitmall.vo.IconVo" />
     </typeAliases>
     <mappers>
         <mapper resource="mybatis/mappers/member.xml" />
@@ -15,5 +16,6 @@
         <mapper resource="mybatis/mappers/small_option.xml" />
         <mapper resource="mybatis/mappers/category.xml" />
         <mapper resource="mybatis/mappers/status.xml" />
+        <mapper resource="mybatis/mappers/icon.xml" />
     </mappers>
 </configuration>
