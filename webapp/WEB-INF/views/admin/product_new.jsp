@@ -13,8 +13,9 @@
     var imageCount = 0;
     var addImageRow = function() {
         imageCount++;
-        var imageInput = "<b>이미지" + imageCount + "</b>:" +
-                         "<input class='current' type='file' name='imageFile' size='30' value='찾아보기'><br>";
+        var imageInput = 
+            "<b>이미지" + imageCount + "</b>:" +
+            "<input class='current' type='file' name='imageFile' size='30' value='찾아보기'><br>";
         
         $("#images input.current").removeClass();
         $("#images").append(imageInput);
@@ -40,7 +41,7 @@
         <tr height="23">
           <td width="100" bgcolor="#CCCCCC" align="center">상품분류</td>
           <td width="700" bgcolor="#F2F2F2">
-            <select name="menu">
+            <select name="categoryNo">
               <option value="0" selected>상품분류를 선택하세요</option>
               <c:forEach items="${categoryList}" var="category">
                 <option value="${category.no}">${category.name}</option>
@@ -66,7 +67,7 @@
         <tr>
           <td width="100" bgcolor="#CCCCCC" align="center">제조사</td>
           <td width="700" bgcolor="#F2F2F2">
-            <input type="text" name="coname" value="" size="30" maxlength="30">
+            <input type="text" name="manufacture" value="" size="30" maxlength="30">
           </td>
         </tr>
         
@@ -98,7 +99,7 @@
         <tr>
           <td width="100" bgcolor="#CCCCCC" align="center">제품설명</td>
           <td width="700" bgcolor="#F2F2F2">
-            <textarea name="content"rows="10" cols="80"></textarea>
+            <textarea name="description"rows="10" cols="80"></textarea>
           </td>
         </tr>
         
@@ -106,7 +107,7 @@
           <td width="100" bgcolor="#CCCCCC" align="center">상품상태</td>
           <td width="700" bgcolor="#F2F2F2">
             <c:forEach items="${statusList}" var="status">
-              <input type="radio" name="status" value="${status.no}"> ${status.name}
+              <input type="radio" name="statusNo" value="${status.no}"> ${status.name}
             </c:forEach>
           </td>
         </tr>

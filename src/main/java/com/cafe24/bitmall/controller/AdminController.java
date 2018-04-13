@@ -14,6 +14,7 @@ import com.cafe24.bitmall.security.Auth;
 import com.cafe24.bitmall.service.CategoryService;
 import com.cafe24.bitmall.service.OptionService;
 import com.cafe24.bitmall.service.StatusService;
+import com.cafe24.bitmall.vo.GoodsVo;
 import com.cafe24.bitmall.vo.OptionVo;
 import com.cafe24.bitmall.vo.SmallOptionVo;
 
@@ -40,6 +41,7 @@ public class AdminController {
         return "admin/member";
     }
     
+    /* 상품 */
     @RequestMapping("product")
     public String product(Model model) {
         model.addAttribute("categoryList", categoryService.getCategoryList());
@@ -56,6 +58,7 @@ public class AdminController {
     
     @RequestMapping(value="product/new", method=RequestMethod.POST)
     public String productNew(
+            @ModelAttribute GoodsVo goodsvo,
             @RequestParam(value="option") String[] options,
             @RequestParam(value="icon", required=false, defaultValue="") String[] checkedIcon,
             @RequestParam(value="imageFile") MultipartFile[] multipartFile,
@@ -70,11 +73,13 @@ public class AdminController {
             System.out.println(file.isEmpty());
         }
         */
-        
+        /*
         for(String option: options) {
             System.out.println(option);
         }
+        */
         
+        System.out.println(goodsvo);
         return "redirect:/admin/product";
     }
     
