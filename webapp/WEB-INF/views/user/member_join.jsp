@@ -204,9 +204,6 @@
               "address":address,
               "email":email
           }, function(data, textStatus, jqXHR) {
-              console.log(data);
-              console.log(textStatus);
-              console.log(jqXHR);
               window.location.replace("${pageContext.servletContext.contextPath}/member/joinend");
           });
       });

@@ -9,6 +9,7 @@
         <typeAlias alias="categoryvo" type="com.cafe24.bitmall.vo.CategoryVo" />
         <typeAlias alias="statusvo" type="com.cafe24.bitmall.vo.StatusVo" />
         <typeAlias alias="iconvo" type="com.cafe24.bitmall.vo.IconVo" />
+        <typeAlias alias="goodsvo" type="com.cafe24.bitmall.vo.GoodsVo" />
     </typeAliases>
     <mappers>
         <mapper resource="mybatis/mappers/member.xml" />
@@ -17,5 +18,6 @@
         <mapper resource="mybatis/mappers/category.xml" />
         <mapper resource="mybatis/mappers/status.xml" />
         <mapper resource="mybatis/mappers/icon.xml" />
+        <mapper resource="mybatis/mappers/goods.xml" />
     </mappers>
 </configuration>

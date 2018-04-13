@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.cafe24.bitmall.security.Auth;
 import com.cafe24.bitmall.service.CategoryService;
+import com.cafe24.bitmall.service.GoodsService;
 import com.cafe24.bitmall.service.OptionService;
 import com.cafe24.bitmall.service.StatusService;
 import com.cafe24.bitmall.vo.GoodsVo;
@@ -22,6 +23,7 @@ import com.cafe24.bitmall.vo.SmallOptionVo;
 @Controller
 @RequestMapping("admin")
 public class AdminController {
+    
     @Autowired
     private OptionService optionService;
     
@@ -30,6 +32,9 @@ public class AdminController {
     
     @Autowired
     private StatusService statusService;
+    
+    @Autowired
+    private GoodsService goodsService;
     
     @RequestMapping("")
     public String login() {
@@ -60,10 +65,11 @@ public class AdminController {
     public String productNew(
             @ModelAttribute GoodsVo goodsvo,
             @RequestParam(value="option") String[] options,
-            @RequestParam(value="icon", required=false, defaultValue="") String[] checkedIcon,
-            @RequestParam(value="imageFile") MultipartFile[] multipartFile,
+            @RequestParam(value="icon", required=false, defaultValue="") String[] icons,
+            @RequestParam(value="imageFile") MultipartFile[] imageFiles,
             Model model) {
         
+        goodsService.addGoods(goodsvo, options, icons, imageFiles);
         /*for(String value: checkedIcon) {
             System.out.println(value);
         }*/
@@ -79,7 +85,6 @@ public class AdminController {
         }
         */
         
-        System.out.println(goodsvo);
         return "redirect:/admin/product";
     }
     
