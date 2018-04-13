@@ -117,7 +117,7 @@
           <td width="700" bgcolor="#F2F2F2">
             <input type="checkbox" name="icon" value="New"> New &nbsp;&nbsp; 
             <input type="checkbox" name="icon" value="Hit"> Hit &nbsp;&nbsp;
-            <input type="checkbox" name="icon" value="Sale" onclick="form1.discount.disabled=!form1.discount.disabled;"> Sale &nbsp;&nbsp 할인율 : 
+            <input type="checkbox" name="icon" value="Sale" onclick="form1.discount.disabled=!form1.discount.disabled;"> Sale &nbsp;&nbsp; 할인율 : 
             <input type="text" name="discount" value="0" size="3" maxlength="3" disabled> %
           </td>
         </tr>

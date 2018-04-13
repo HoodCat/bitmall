@@ -64,7 +64,7 @@ public class AdminController {
     @RequestMapping(value="product/new", method=RequestMethod.POST)
     public String productNew(
             @ModelAttribute GoodsVo goodsvo,
-            @RequestParam(value="option") String[] options,
+            @RequestParam(value="option") Long[] options,
             @RequestParam(value="icon", required=false, defaultValue="") String[] icons,
             @RequestParam(value="imageFile") MultipartFile[] imageFiles,
             Model model) {
