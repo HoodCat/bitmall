@@ -54,6 +54,7 @@ public class AdminController {
     @RequestMapping("product")
     public String product(Model model) {
         model.addAttribute("categoryList", categoryService.getCategoryList());
+        model.addAttribute("goodsList", goodsService.getGoodsList());
         return "admin/product";
     }
     
@@ -77,6 +78,11 @@ public class AdminController {
         goodsService.addGoods(goodsvo, options, icons, imageFiles);
         
         return "redirect:/admin/product";
+    }
+    
+    @RequestMapping(value="product/edit", method=RequestMethod.GET)
+    public String productEdit() {
+        return "admin/product_edit";
     }
     
     @RequestMapping("jumun")

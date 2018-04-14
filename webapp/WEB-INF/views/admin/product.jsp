@@ -73,32 +73,25 @@
       <td width="120" align="center">이벤트</td>
       <td width="80" align="center">수정/삭제</td>
     </tr>
-
-    <tr bgcolor="#F2F2F2" height="23">
-      <td width="100">&nbsp 코트</td>
-      <td width="100">&nbsp Coat001</td>
-      <td width="280">&nbsp 비싼 코트</td>
-      <td width="70" align="right">4,500,000 &nbsp</td>
-      <td width="50" align="center">판매중</td>
-      <td width="120" align="center">&nbsp New Hit Sale(10%)</td>
-      <td width="80" align="center">
-        <a href="product_edit.jsp">수정</a>/
-        <a href="#">삭제</a>
-      </td>
-    </tr>
     
-    <tr bgcolor="#F2F2F2" height="23">
-      <td width="100">&nbsp 코트</td>
-      <td width="100">&nbsp Coat001</td>
-      <td width="280">&nbsp 비싼 코트</td>
-      <td width="70" align="right">4,500,000 &nbsp</td>
-      <td width="50" align="center">판매중</td>
-      <td width="120" align="center">&nbsp New Hit Sale(10%)</td>
-      <td width="80" align="center">
-        <a href="product/edit">수정</a>/
-        <a href="#">삭제</a>
-      </td>
-    </tr>
+    <c:forEach items="${goodsList}" var="goods">
+      <tr bgcolor="#F2F2F2" height="23">
+        <td width="100">&nbsp ${goods.cname}</td>
+        <td width="100">&nbsp ${goods.code}</td>
+        <td width="280">&nbsp ${goods.gname }</td>
+        <td width="70" align="right">${goods.price} &nbsp</td>
+        <td width="50" align="center">${goods.sname}</td>
+        <td width="120" align="center">&nbsp ${goods.iconStr}
+          <c:if test="not empty ${goods.rateSale}">
+            (${goods.rateSale}%)
+          </c:if>
+        </td>
+        <td width="80" align="center">
+          <a href="product/edit">수정</a>/
+          <a href="#">삭제</a>
+        </td>
+      </tr>
+    </c:forEach>
   </table>
 
   <br>

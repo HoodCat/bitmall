@@ -14,4 +14,19 @@
       ]]>      
       </selectKey>
     </insert>
+    
+    <select id="selectList" resultType="map">
+    <![CDATA[
+        select goods.no, code, goods.name as gname, manufacture, price,
+               rate_sale as rateSale, category.name as cname,
+               status.name as sname, c.iconStr
+        from goods
+        inner join category on goods.category_no = category.no
+        inner join status on goods.status_no = status.no
+        left join (select goods_no, group_concat(icon.name) as iconStr
+                   from goods_icon
+                   inner join icon on goods_icon.icon_no = icon.no
+                   group by goods_no) as c on goods.no = c.goods_no
+    ]]>
+    </select>
 </mapper>

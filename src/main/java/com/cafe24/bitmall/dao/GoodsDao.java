@@ -1,5 +1,8 @@
 package com.cafe24.bitmall.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -13,5 +16,9 @@ public class GoodsDao {
     
     public boolean insert(GoodsVo goodsVo) {
         return sqlSession.insert("goods.insert", goodsVo)==1;
+    }
+    
+    public List<Map<String, Object>> selectList() {
+        return sqlSession.selectList("goods.selectList");
     }
 }
