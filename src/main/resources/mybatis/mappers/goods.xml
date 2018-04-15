@@ -15,7 +15,7 @@
       </selectKey>
     </insert>
     
-    <select id="selectList" resultType="map">
+    <select id="selectList" parameterType="map" resultType="map">
     <![CDATA[
         select goods.no, code, goods.name as gname, manufacture, price,
                rate_sale as rateSale, category.name as cname,
@@ -27,13 +27,88 @@
                    from goods_icon
                    inner join icon on goods_icon.icon_no = icon.no
                    group by goods_no) as c on goods.no = c.goods_no
+        where 1=1
+    ]]>
+    <if test="status gt 0">
+    <![CDATA[
+        and status.no = ${status}
+    ]]>
+    </if>
+    <if test="category gt 0">
+    <![CDATA[
+        and category.no = ${category}
+    ]]>
+    </if>
+    <if test="icon gt 0">
+    <![CDATA[
+        and exists(select 1
+                   from icon as i
+                   where i.no = ${icon} and
+                         iconStr like concat('%', i.name, '%'))
+    ]]>
+    </if>
+    <if test="keyword != ''">
+      <choose>
+          <when test="search == 1">
+          <![CDATA[
+              and goods.name like '%${keyword}%'
+          ]]>
+          </when>
+          <when test="search == 2">
+          <![CDATA[
+              and code like '%${keyword}%'
+          ]]>
+          </when>
+      </choose>
+    </if>
+    <![CDATA[
+        limit ${(page -1) * 10}, 10
     ]]>
     </select>
     
-    <select id="selectTotalCount" resultType="long">
+    <select id="selectTotalCount" parameterType="map" resultType="long">
     <![CDATA[
-        select count(no)
+        select count(goods.no)
         from goods
+        inner join category on goods.category_no = category.no
+        inner join status on goods.status_no = status.no
+        left join (select goods_no, group_concat(icon.name) as iconStr
+                   from goods_icon
+                   inner join icon on goods_icon.icon_no = icon.no
+                   group by goods_no) as c on goods.no = c.goods_no
+        where 1=1
     ]]>
+    <if test="status gt 0">
+    <![CDATA[
+        and status.no = ${status}
+    ]]>
+    </if>
+    <if test="category gt 0">
+    <![CDATA[
+        and category.no = ${category}
+    ]]>
+    </if>
+    <if test="icon gt 0">
+    <![CDATA[
+        and exists(select 1
+                   from icon as i
+                   where i.no = ${icon} and
+                         iconStr like concat('%', i.name, '%'))
+    ]]>
+    </if>
+    <if test="keyword != ''">
+      <choose>
+          <when test="search == 1">
+          <![CDATA[
+              and goods.name like '%${keyword}%'
+          ]]>
+          </when>
+          <when test="search == 2">
+          <![CDATA[
+              and code like '%${keyword}%'
+          ]]>
+          </when>
+      </choose>
+    </if>
     </select>
 </mapper>

@@ -15,15 +15,19 @@ public class GoodsDao {
     @Autowired
     private SqlSession sqlSession;
     
+    public static int getListPageSize() {
+        return LIST_PAGE_SIZE;
+    }
+
     public boolean insert(GoodsVo goodsVo) {
         return sqlSession.insert("goods.insert", goodsVo)==1;
     }
     
-    public List<Map<String, Object>> selectList() {
-        return sqlSession.selectList("goods.selectList");
+    public List<Map<String, Object>> selectList(Map<String, Object> parameter) {
+        return sqlSession.selectList("goods.selectList", parameter);
     }
     
-    public Long selectTotalCount() {
-        return sqlSession.selectOne("goods.selectTotalCount");
+    public Long selectTotalCount(Map<String, Object> parameter) {
+        return sqlSession.selectOne("goods.selectTotalCount", parameter);
     }
 }

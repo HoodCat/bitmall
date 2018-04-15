@@ -18,6 +18,11 @@ import com.cafe24.bitmall.vo.GoodsVo;
 
 @Service
 public class GoodsService {
+    private static Long startPage = 1L;
+    private Long curPage = 1L;
+    private Long lastPage = 1L;
+    private Long totCnt = 0L;
+    
     @Autowired
     private GoodsDao goodsDao;
     
@@ -33,7 +38,22 @@ public class GoodsService {
     @Autowired
     private GoodsImageDao goodsImageDao;
     
-    
+    public static Long getStartPage() {
+        return startPage;
+    }
+
+    public Long getCurPage() {
+        return curPage;
+    }
+
+    public Long getLastPage() {
+        return lastPage;
+    }
+
+    public Long getTotCnt() {
+        return totCnt;
+    }
+
     public boolean addGoods(GoodsVo goodsVo, Long[] options, Long[] icons, MultipartFile[] imageFiles) {
         boolean result = goodsDao.insert(goodsVo);
         
@@ -66,11 +86,11 @@ public class GoodsService {
         return result;
     }
     
-    public List<Map<String, Object>> getGoodsList() {
-        return goodsDao.selectList();
-    }
-    
-    public Long getTotalCount() {
-        return goodsDao.selectTotalCount();
+    public List<Map<String, Object>> getGoodsList(Map<String, Object> parameter) {
+        List<Map<String, Object>> result =goodsDao.selectList(parameter);
+        totCnt = (long)goodsDao.selectTotalCount(parameter);
+        curPage = (Long)parameter.get("page");
+        lastPage = (long)Math.ceil((double)totCnt/GoodsDao.getListPageSize());
+        return result;
     }
 }

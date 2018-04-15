@@ -21,7 +21,7 @@
   <br>
   <br>
   
-  <form name="form1" action="${pageContext.servletContext.contextPath}/admin/product" method="post">
+  <form name="form1" action="${pageContext.servletContext.contextPath}/admin" method="post">
     <input type="hidden" name="no" value="${authMember.no}">
     <table bordercolor="purple" border width='330' cellpadding='4' cellspacing='0' align='center'>
       <tr>
