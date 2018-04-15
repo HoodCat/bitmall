@@ -29,4 +29,11 @@
                    group by goods_no) as c on goods.no = c.goods_no
     ]]>
     </select>
+    
+    <select id="selectTotalCount" resultType="long">
+    <![CDATA[
+        select count(no)
+        from goods
+    ]]>
+    </select>
 </mapper>

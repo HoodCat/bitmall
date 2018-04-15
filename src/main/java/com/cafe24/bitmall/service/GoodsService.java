@@ -69,4 +69,8 @@ public class GoodsService {
     public List<Map<String, Object>> getGoodsList() {
         return goodsDao.selectList();
     }
+    
+    public Long getTotalCount() {
+        return goodsDao.selectTotalCount();
+    }
 }

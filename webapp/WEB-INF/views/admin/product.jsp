@@ -14,41 +14,41 @@
   <br>
   <jsp:include page="/WEB-INF/views/include/admin-menu.jsp" />
   <hr width='900' size='3'>
-  <form name="form1" method="get" action="">
+  <form name="form1" method="get" action="product">
     <table width="800" border="0" cellspacing="0" cellpadding="0">
       <tr height="40">
         <td align="left" width="150" valign="bottom">&nbsp 제품수 : 
-          <font color="#FF0000">20</font>
+          <font color="#FF0000">${goodsTotCnt}</font>
         </td>
         
         <td align="right" width="550" valign="bottom">
-          <select name="sel1">
+          <select name="status">
             <option value="0">상품상태</option>
-            <option value="1">판매중</option>
-            <option value="2">판매중지</option>
-            <option value="3">품절</option>
+            <c:forEach items="${statusList}" var="s">
+              <option value="${s.no}">${s.name}</option>
+            </c:forEach>
           </select> &nbsp 
           
-          <select name="sel2">
+          <select name="icon">
             <option value="0">아이콘선택</option>
-            <option value="1">New</option>
-            <option value="2">Hit</option>
-            <option value="3">Sale</option>
+            <c:forEach items="${iconList}" var="i">
+              <option value="${i.no}">${i.name}</option>
+            </c:forEach>
           </select> &nbsp 
           
           <select name="category">
             <option value="0">분류선택</option>
-            <c:forEach items="${categoryList}" var="category">
-              <option value="${category.no}">${category.name}</option>            
+            <c:forEach items="${categoryList}" var="c">
+              <option value="${c.no}">${c.name}</option>            
             </c:forEach>
           </select> &nbsp 
           
-          <select name="sel4">
+          <select name="search">
             <option value="1" selected>제품이름</option>
             <option value="2">제품번호</option>
           </select> 
           
-          <input type="text" name="text1" size="10" value="">&nbsp
+          <input type="text" name="keyword" size="10" value="">&nbsp
         </td>
         
         <td align="left" width="120" valign="bottom">
