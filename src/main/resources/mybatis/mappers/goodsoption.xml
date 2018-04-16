@@ -8,4 +8,20 @@
         values(null, #{goodsNo}, #{optionNo})    
     ]]>
     </insert>
+    
+    <select id="selectByGoodsNo" parameterType="long" resultType="goodsoptionvo">
+    <![CDATA[
+        select no, goods_no as goodsNo, option_no as optionNo
+        from goods_option
+        where goods_no = #{goodsNo}
+    ]]>
+    </select>
+    
+    <select id="selectByGoods" parameterType="goodsoptionvo" resultType="goodsoptionvo">
+    <![CDATA[
+        select no, goods_no as goodsNo, option_no as optionNo
+        from goods_option
+        where goods_no = #{goodsNo}
+    ]]>
+    </select>
 </mapper>

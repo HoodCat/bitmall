@@ -12,6 +12,9 @@
     http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
     http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
 
+    <!-- resource mapping -->
+    <mvc:resources location="file:/bitmall/goods/images/" mapping="/uploads/images/**"/>
+
 	<!-- validator, conversionService, messageConverter를 자동으로 등록 -->
 	<mvc:annotation-driven>
         <mvc:message-converters>

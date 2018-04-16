@@ -117,9 +117,15 @@ public class AdminController {
         return "redirect:/admin/product";
     }
     
-    @RequestMapping(value="product/edit", method=RequestMethod.GET)
-    public String productEdit() {
-        
+    @RequestMapping(value="product/edit/{goodsNo}", method=RequestMethod.GET)
+    public String productEdit(
+            @PathVariable(value="goodsNo") Long goodsNo,
+            Model model) {
+        model.addAttribute("categoryList", categoryService.getCategoryList());
+        model.addAttribute("optionList", optionService.getOptionList());
+        model.addAttribute("statusList", statusService.getStatusList());
+        model.addAttribute("iconList", iconSerivce.getIconList());
+        model.addAttribute("goods", goodsService.getGoods(goodsNo));
         return "admin/product_edit";
     }
     

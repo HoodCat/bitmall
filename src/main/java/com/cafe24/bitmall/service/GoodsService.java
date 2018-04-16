@@ -86,11 +86,30 @@ public class GoodsService {
         return result;
     }
     
+    public GoodsVo getGoods(GoodsVo goodsVo) {
+        return goodsDao.select(goodsVo);
+    }
+    
+    public GoodsVo getGoods(Long no) {
+        return goodsDao.select(no);
+    }
+    
     public List<Map<String, Object>> getGoodsList(Map<String, Object> parameter) {
+        if(parameter.containsKey("pageSize") == false) {
+            parameter.put("pageSize", GoodsDao.getListPageSize());
+        }
         List<Map<String, Object>> result =goodsDao.selectList(parameter);
         totCnt = (long)goodsDao.selectTotalCount(parameter);
         curPage = (Long)parameter.get("page");
         lastPage = (long)Math.ceil((double)totCnt/GoodsDao.getListPageSize());
         return result;
+    }
+    
+    public List<GoodsOptionVo> getGoodsOptionList(Long goodsNo) {
+        return goodsOptionDao.selectList(goodsNo);
+    }
+    
+    public List<GoodsOptionVo> getGoodsOptionList(GoodsVo goodsVo) {
+        return goodsOptionDao.selectList(goodsVo);
     }
 }

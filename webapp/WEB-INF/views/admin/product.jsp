@@ -101,7 +101,7 @@
             </c:if>
           </td>
           <td width="80" align="center">
-            <a href="product/edit?no=${goods.no}">수정</a>/
+            <a href="product/edit/${goods.no}">수정</a>/
             <a href="#">삭제</a>
           </td>
         </tr>

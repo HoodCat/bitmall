@@ -23,6 +23,14 @@ public class GoodsDao {
         return sqlSession.insert("goods.insert", goodsVo)==1;
     }
     
+    public GoodsVo select(GoodsVo goodsVo) {
+        return sqlSession.selectOne("goods.select", goodsVo);
+    }
+    
+    public GoodsVo select(Long no) {
+        return sqlSession.selectOne("goods.selectByNo", no);
+    }
+    
     public List<Map<String, Object>> selectList(Map<String, Object> parameter) {
         return sqlSession.selectList("goods.selectList", parameter);
     }

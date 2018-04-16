@@ -15,11 +15,31 @@
       </selectKey>
     </insert>
     
+    <select id="select" parameterType="goodsvo" resultType="goodsvo">
+    <![CDATA[
+        select no, code, name, manufacture, price, description,
+               rate_sale as rateSale, category_no as categoryNo,
+               status_no as statusNo
+        from goods
+        where no = #{no}
+    ]]>    
+    </select>
+    
+    <select id="selectByNo" parameterType="long" resultType="goodsvo">
+    <![CDATA[
+        select no, code, name, manufacture, price, description,
+               rate_sale as rateSale, category_no as categoryNo,
+               status_no as statusNo
+        from goods
+        where no = #{no}
+    ]]>
+    </select>
+    
     <select id="selectList" parameterType="map" resultType="map">
     <![CDATA[
         select goods.no, code, goods.name as gname, manufacture, price,
                rate_sale as rateSale, category.name as cname,
-               status.name as sname, c.iconStr
+               status.name as sname, c.iconStr, d.path as gImg
         from goods
         inner join category on goods.category_no = category.no
         inner join status on goods.status_no = status.no
@@ -27,6 +47,7 @@
                    from goods_icon
                    inner join icon on goods_icon.icon_no = icon.no
                    group by goods_no) as c on goods.no = c.goods_no
+        left join (select goods_no, path from goods_image group by goods_no) as d on goods.no = d.goods_no
         where 1=1
     ]]>
     <if test="status gt 0">
@@ -62,7 +83,7 @@
       </choose>
     </if>
     <![CDATA[
-        limit ${(page -1) * 10}, 10
+        limit ${(page -1) * pageSize}, ${pageSize}
     ]]>
     </select>
     
