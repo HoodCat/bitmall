@@ -14,4 +14,19 @@
           ]]>
       </selectKey>
     </insert>
+    
+    <select id="selectOrderList" resultType="map">
+    <![CDATA[
+      select `order`.no, DATE_FORMAT(`order`.order_date, "%Y-%m-%d") as orderDate, `order`.order_code as orderCode, 
+             `order`.order_status as orderStatus, concat(backup_goods.name, ' 외 ',
+             count(`order`.no)-1)as goodsName, sum(order_goods.amount) as totalAmount,
+             sum(backup_goods.price*(1-backup_goods.rate_sale/100) * order_goods.amount) as totalPrice,
+             member.name as memberName, `order`.payment_method as paymentMethod
+      from `order`
+      inner join member on `order`.member_no = member.no
+      inner join order_goods on `order`.no = order_goods.order_no
+      inner join backup_goods on order_goods.goods_no = backup_goods.no
+      group by `order`.no
+    ]]>
+    </select>
 </mapper>

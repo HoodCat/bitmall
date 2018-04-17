@@ -140,69 +140,66 @@
               <td width="100" align="center">가격</td>
               <td width="100" align="center">합계</td>
             </tr>
-            <tr bgcolor="#FFFFFF">
-              <td height="60" align="center">
-                <table cellpadding="0" cellspacing="0" width="100%">
-                  <tr>
-                    <td width="60">
-                      <a href="product_detail.jsp?no=0000">
-                        <img src="${pageContext.servletContext.contextPath }/assets/images/product/0000_s.jpg" width="50" height="50" border="0">
-                      </a>
-                    </td>
-                    
-                    <td class="cmfont">
-                      <a href="product_detail.jsp?no=0000">
-                        <font color="#0066CC">제품명1</font>
-                      </a>
-                      <br> [옵션]</font> 옵션1
-                    </td>
-                  </tr>
-                </table>
-              </td>
-              <td align="center"><font color="#464646">1&nbsp개</font></td>
-              <td align="center"><font color="#464646">70,200</font>원</td>
-              <td align="center"><font color="#464646">70,200</font>원</td>
-            </tr>
-            
-            <tr bgcolor="#FFFFFF">
-              <td height="60" align="center">
-                <table cellpadding="0" cellspacing="0" width="100%">
-                  <tr>
-                    <td width="60">
-                      <a href="product_detail.jsp?no=0000">
-                        <img src="${pageContext.servletContext.contextPath }/assets/images/product/0000_s.jpg" width="50" height="50" border="0">
-                      </a>
-                    </td>
-                    <td class="cmfont">
-                      <a href="product_detail.jsp?no=0000">
-                        <font color="#0066CC">제품명2</font>
-                      </a>
-                      <br> [옵션]</font> 옵션2
-                    </td>
-                  </tr>
-                </table>
-              </td>
-              <td align="center"><font color="#464646">1&nbsp개</font></td>
-              <td align="center"><font color="#464646">60,000</font>원</td>
-              <td align="center"><font color="#464646">60,000</font>원</td>
-            </tr>
-            
-            <tr>
-              <td colspan="5" bgcolor="#F0F0F0">
-                <table width="100%" border="0" cellpadding="0" cellspacing="0" class="cmfont">
-                  <tr>
-                    <td bgcolor="#F0F0F0">
-                      <img src="${pageContext.servletContext.contextPath }/assets/images/cart_image1.gif" border="0">
-                    </td>
-                    <td align="right" bgcolor="#F0F0F0">
-                      <font color="#0066CC"><b>총 합계금액</font></b>
-                      :상품대금(132,000원) + 배송료(2,500원) =
-                      <font color="#FF3333"><b>134,500원</b></font>&nbsp;&nbsp;
-                    </td>
-                  </tr>
-                </table>
-              </td>
-            </tr>
+            <c:forEach items="${cartList}" var="cart">
+              <tr>
+                <form method="post" action="">
+                  <td height="60" align="center" bgcolor="#FFFFFF">
+                    <table cellpadding="0" cellspacing="0" width="100%">
+                      <tr>
+                        <td width="60">
+                          <a href="product_detail.jsp?product_num=0000">
+                            <img src="${pageContext.servletContext.contextPath}${cart.path}" width="50" height="50" border="0">
+                          </a>
+                        </td>
+                        <td class="cmfont">
+                          <a href="product_detail.jsp?product_num=0000">${cart.name}</a>
+                          <br>
+                          <c:if test="${not empty cart.optionList}">
+                            <font color="#0066CC">[옵션사항]</font> ${cart.nameList}
+                          </c:if>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                  <td align="center" bgcolor="#FFFFFF">
+                    <input type="text" name="num1" size="3" value="${cart.amount}" class="cmfont1" readonly="readonly">
+                    &nbsp<font color="#464646">개</font>
+                  </td>
+                  <td align="center" bgcolor="#FFFFFF">
+                    <font color="#464646">
+                      <fmt:formatNumber value="${cart.price}" type="number"/>
+                    </font>
+                  </td>
+                  <td align="center" bgcolor="#FFFFFF">
+                    <font color="#464646">
+                      <fmt:formatNumber value="${cart.price * (1-cart.rateSale/100) * cart.amount}" type="number" maxFractionDigits="0"/>
+                    </font>
+                  </td>
+                </form>
+              </tr>
+            </c:forEach>
+            <c:if test="${not empty cartList}">
+              <tr>
+                <td colspan="5" bgcolor="#F0F0F0">
+                  <table width="100%" border="0" cellpadding="0" cellspacing="0" class="cmfont">
+                    <tr>
+                      <td bgcolor="#F0F0F0">
+                        <img src="${pageContext.servletContext.contextPath }/assets/images/cart_image1.gif" border="0">
+                      </td>
+                      <td align="right" bgcolor="#F0F0F0">
+                        <font color="#0066CC"><b>총 합계금액</font></b>
+                        : 상품대금(
+                        <fmt:formatNumber value="${totPrice}" type="number" maxFractionDigits="0"/>
+                                              원) + 배송료(2,500원) =
+                        <font color="#FF3333"><b>
+                        <fmt:formatNumber value="${totPrice + 2500}" type="number" maxFractionDigits="0"/>
+                                              원</b></font>&nbsp;&nbsp;
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </c:if>
           </table> 
           <br>
           <br>
@@ -250,7 +247,7 @@
                       <td width="20"><b>:</b></td>
                       <td width="390">
                         <input type="radio" name="paymentMethod" onclick="javascript:PaySel(0);" value="1" checked>카드 &nbsp;
-                        <input type="radio" name="paymentMethod" onclick="javascript:PaySel(1);" value="2">무통장
+                        <input type="radio" name="paymentMethod" onclick="javascript:PaySel(1);" value="0">무통장
                       </td>
                     </tr>
                   </table>

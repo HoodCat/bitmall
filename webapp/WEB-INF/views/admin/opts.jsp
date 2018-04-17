@@ -58,46 +58,48 @@
     </script>
   </head>
   <body bgcolor="white" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
-    <br>
-    <jsp:include page="/WEB-INF/views/include/admin-menu.jsp" />
-    <hr width='900' size='3'>
-    <table width="450" border="0" cellspacing="0" cellpadding="0">
-      <tr height="50">
-        <td align="left" width="300" valign="bottom">
-          &nbsp 옵션명 : 
-          <font color="#0457A2"><b>${option.name}</b></font>
-        </td>
-        
-        <td align="right" width="200" valign="bottom">
-          <input id="add-button" type="button" value="신규입력" onclick="javascript:goNew();">
-          &nbsp
-        </td>
-      </tr>
-      <tr>
-        <td height="5" colspan="2"></td>
-      </tr>
-    </table>
-  
-    <table id="small_option" width="500" border="1" cellspacing="0" bordercolordark="white" bordercolorlight="black">
-      <tr bgcolor="#CCCCCC" height="20">
-        <td width="100" align="center"><font color="#142712">소옵션번호</font></td>
-        <td width="300" align="center"><font color="#142712">소옵션명</font></td>
-        <td width="100" align="center"><font color="#142712">수정/삭제</font></td>
-      </tr>
-      
-      <!-- 소옵션 리스트 -->
-      
-      <c:forEach items="${sOptionList}" var="smallOption" varStatus="status">
-        <tr bgcolor="#F2F2F2" height="20">
-          <td width="100" align="center">${status.index + 1}</td>
-          <td width="300" align="left">${smallOption.name}</td>
-          <td width="100" align="center">
-            <a href="${option.no}/edit/${smallOption.no}">수정</a>/
-            <a href="${option.no}/delete/${smallOption.no}">삭제</a>
+    <div align="center">
+      <br>
+      <jsp:include page="/WEB-INF/views/include/admin-menu.jsp" />
+      <hr width='900' size='3'>
+      <table width="450" border="0" cellspacing="0" cellpadding="0">
+        <tr height="50">
+          <td align="left" width="300" valign="bottom">
+            &nbsp 옵션명 : 
+            <font color="#0457A2"><b>${option.name}</b></font>
+          </td>
+          
+          <td align="right" width="200" valign="bottom">
+            <input id="add-button" type="button" value="신규입력" onclick="javascript:goNew();">
+            &nbsp
           </td>
         </tr>
-      </c:forEach>
-      
-    </table>
+        <tr>
+          <td height="5" colspan="2"></td>
+        </tr>
+      </table>
+    
+      <table id="small_option" width="500" border="1" cellspacing="0" bordercolordark="white" bordercolorlight="black">
+        <tr bgcolor="#CCCCCC" height="20">
+          <td width="100" align="center"><font color="#142712">소옵션번호</font></td>
+          <td width="300" align="center"><font color="#142712">소옵션명</font></td>
+          <td width="100" align="center"><font color="#142712">수정/삭제</font></td>
+        </tr>
+        
+        <!-- 소옵션 리스트 -->
+        
+        <c:forEach items="${sOptionList}" var="smallOption" varStatus="status">
+          <tr bgcolor="#F2F2F2" height="20">
+            <td width="100" align="center">${status.index + 1}</td>
+            <td width="300" align="left">${smallOption.name}</td>
+            <td width="100" align="center">
+              <a href="${option.no}/edit/${smallOption.no}">수정</a>/
+              <a href="${option.no}/delete/${smallOption.no}">삭제</a>
+            </td>
+          </tr>
+        </c:forEach>
+        
+      </table>
+    </div>
   </body>
 </html>

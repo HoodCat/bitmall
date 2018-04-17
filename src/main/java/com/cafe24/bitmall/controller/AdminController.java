@@ -18,6 +18,7 @@ import com.cafe24.bitmall.service.CategoryService;
 import com.cafe24.bitmall.service.GoodsService;
 import com.cafe24.bitmall.service.IconService;
 import com.cafe24.bitmall.service.OptionService;
+import com.cafe24.bitmall.service.OrderService;
 import com.cafe24.bitmall.service.StatusService;
 import com.cafe24.bitmall.vo.GoodsVo;
 import com.cafe24.bitmall.vo.OptionVo;
@@ -42,6 +43,9 @@ public class AdminController {
     
     @Autowired
     private IconService iconSerivce;
+    
+    @Autowired
+    private OrderService orderService;
     
     @RequestMapping(value="", method=RequestMethod.GET)
     public String login() {
@@ -130,8 +134,15 @@ public class AdminController {
     }
     
     @RequestMapping("jumun")
-    public String jumun() {
+    public String jumun(
+            Model model) {
+        model.addAttribute("orderList", orderService.getOrderList());
         return "admin/jumun";
+    }
+    
+    @RequestMapping("jumun/info")
+    public String jumunInfo(Model model) {
+        return "admin/jumun_info";
     }
     
     /* 옵션 */

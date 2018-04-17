@@ -87,4 +87,9 @@ public class OrderService {
         cartDao.deleteAll(orderVo.getMemberNo());
         return result;
     }
+    
+    public List<Map<String, Object>> getOrderList() {
+        return orderDao.selectOrderList();
+    }
+    
 }

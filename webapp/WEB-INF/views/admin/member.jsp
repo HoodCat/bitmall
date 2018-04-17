@@ -10,6 +10,7 @@
     <link href="${pageContext.servletContext.contextPath }/assets/css/font.css" rel="stylesheet" type="text/css">
   </head>
   <body bgcolor="white" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+  <div align="center">
     <input type="hidden" name="no" value="${authUser.no}">
     <br>
     <jsp:include page="/WEB-INF/views/include/admin-menu.jsp" />
@@ -83,5 +84,6 @@
         </td>
       </tr>
     </table>
+  </div>
   </body>
 </html>

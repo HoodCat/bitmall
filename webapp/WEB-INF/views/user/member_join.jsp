@@ -12,7 +12,7 @@
   <script src="${pageContext.servletContext.contextPath}/assets/jquery/jquery-1.9.0.js" type="text/javascript"></script>
   <script type="text/javascript">
   
-  var idCheck = false;
+  var idChecked = false;
   
   var isEqualPassword = function() {
       var pw1 = $("input[name='password1']").val();
@@ -143,7 +143,7 @@
           "data":{"id":getId()},
           "dataType":"json",
           "success":function(response) {
-              if(response) {
+              if(response == "true") {
                   alert("이미 존재하는 아이디입니다.");
                   return;
               }

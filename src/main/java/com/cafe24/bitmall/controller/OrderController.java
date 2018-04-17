@@ -44,7 +44,16 @@ public class OrderController {
     
     @Auth
     @RequestMapping(value="pay", method=RequestMethod.GET)
-    public String pay() {
+    public String pay(
+            @AuthMember MemberVo authMember,
+            Model model) {
+        List<Map<String,Object>> cartList = cartService.getCartList(authMember.getNo());
+        
+        if(cartList.size() == 0) {
+            return "redirect:/";
+        }
+        model.addAttribute("cartList", cartList);
+        model.addAttribute("totPrice", cartService.getTotPrice());
         return "order_pay";
     }
     
