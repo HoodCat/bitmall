@@ -28,6 +28,15 @@
         ]]>
     </select>
     
+    <select id="selectByGoodsNo" parameterType="long" resultType="smalloptionvo">
+    <![CDATA[
+        select small_option.no, small_option.name, small_option.option_no as optionNo
+        from goods_option
+        inner join small_option on goods_option.option_no = small_option.option_no
+        where goods_no = #{_parameter}
+    ]]>   
+    </select>
+    
     <insert id="insert" parameterType="smalloptionvo">
         <![CDATA[
             insert into small_option

@@ -20,4 +20,8 @@ public class IconService {
     public List<IconVo> getIconList() {
         return iconDao.selectIconList();
     }
+    
+    public List<IconVo> getIconList(Long goodsNo) {
+        return iconDao.selectIconList(goodsNo);
+    }
 }

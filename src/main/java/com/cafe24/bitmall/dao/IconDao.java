@@ -20,4 +20,8 @@ public class IconDao {
     public List<IconVo> selectIconList() {
         return sqlSession.selectList("icon.selectList");
     }
+    
+    public List<IconVo> selectIconList(Long goodsNo){
+        return sqlSession.selectList("icon.selectListByGoodsNo", goodsNo);
+    }
 }

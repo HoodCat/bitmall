@@ -69,4 +69,11 @@ public class OptionService {
         return sOptionDao.delete(sOptionVo);
     }
     
+    public List<OptionVo> getGoodsOptionList(Long goodsNo) {
+        return optionDao.selectList(goodsNo);
+    }
+    
+    public List<SmallOptionVo> getGoodsSOptionList(Long goodsNo) {
+       return sOptionDao.selectSmallOptionListByGoodsNo(goodsNo);
+    }
 }

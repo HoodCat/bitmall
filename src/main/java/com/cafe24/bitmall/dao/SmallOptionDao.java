@@ -25,6 +25,10 @@ public class SmallOptionDao {
         return session.selectList("smalloption.selectByOptionNo", optionNo);
     }
     
+    public List<SmallOptionVo> selectSmallOptionListByGoodsNo(Long goodsNo) {
+        return session.selectList("smalloption.selectByGoodsNo", goodsNo);
+    }
+    
     public boolean insert(SmallOptionVo sOptionVo) {
         return session.insert("smalloption.insert", sOptionVo)==1;
     }

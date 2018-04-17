@@ -37,4 +37,8 @@ public class OptionDao {
     public OptionVo selectOption(Long no) {
         return sqlSession.selectOne("option.selectByNo", no);
     }
+    
+    public List<OptionVo> selectList(Long goodsNo) {
+        return sqlSession.selectList("option.selectListByGoodsNo", goodsNo);
+    }
 }

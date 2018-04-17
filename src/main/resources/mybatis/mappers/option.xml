@@ -42,4 +42,13 @@
             where no = #{_parameter}
         ]]>
     </select>
+    
+    <select id="selectListByGoodsNo" parameterType="long" resultType="optionvo">
+    <![CDATA[
+        select `option`.no, `option`.name
+        from goods_option
+        inner join `option` on goods_option.option_no = `option`.no
+        where goods_no =#{_parameter}
+    ]]>
+    </select>
 </mapper>

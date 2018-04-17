@@ -16,7 +16,7 @@
   			<table width="100%"  border="0" cellspacing="0" cellpadding="0">
   				<tr>
                   <td>
-                    <a href="product/${categoryNo}">
+                    <a href="${pageContext.servletContext.contextPath}/product/${category.no}">
                       <img src="${pageContext.servletContext.contextPath}${category.imagePath}" width="176" height="30" border="0"  onmouseover="img_change('on')" onmouseout="img_change('off')">
                     </a>
                   </td>

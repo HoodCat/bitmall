@@ -43,12 +43,12 @@
                     <td align="center">
                       <c:choose>
                         <c:when test="${not empty goods.gImg}">
-                          <a href="product/detail/${goods.no}">
+                          <a href="${pageContext.servletContext.contextPath}/product/detail/${goods.no}">
                             <img src="${pageContext.servletContext.contextPath }${goods.gImg}" width="120" height="140" border="0">
                           </a>
                         </c:when>
                       <c:otherwise>
-                          <a href="product/detail/${goods.no}">
+                          <a href="${pageContext.servletContext.contextPath}/product/detail/${goods.no}">
                             <img src="${pageContext.servletContext.contextPath }/assets/images/product/0000_s.jpg" width="120" height="140" border="0">
                           </a>
                       </c:otherwise>
@@ -82,7 +82,9 @@
                   </tr>
                   
                   <tr>
-                    <td height="20" align="center"><b>${goods.price} 원</b></td>
+                    <%-- <td height="20" align="center"><b>${goods.price} 원</b></td> --%>
+                    <td height="20" align="center">
+                    <b><fmt:formatNumber value="${goods.price}" type="number"/> 원</b></td>
                   </tr>
                 </table>
               </td>

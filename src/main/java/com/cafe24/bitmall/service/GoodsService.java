@@ -58,6 +58,9 @@ public class GoodsService {
         boolean result = goodsDao.insert(goodsVo);
         
         for(Long option: options) {
+            if(option == 0) {
+                continue;
+            }
             GoodsOptionVo gOptionVo = new GoodsOptionVo();
             gOptionVo.setGoodsNo(goodsVo.getNo());
             gOptionVo.setOptionNo(option);
@@ -65,6 +68,9 @@ public class GoodsService {
         }
         
         for(Long icon: icons) {
+            if(icon == 0) {
+                continue;
+            }
             GoodsIconVo gIconVo = new GoodsIconVo();
             gIconVo.setGoodsNo(goodsVo.getNo());
             gIconVo.setIconNo(icon);
@@ -98,10 +104,11 @@ public class GoodsService {
         if(parameter.containsKey("pageSize") == false) {
             parameter.put("pageSize", GoodsDao.getListPageSize());
         }
+        int pageSize = (Integer)parameter.get("pageSize");
         List<Map<String, Object>> result =goodsDao.selectList(parameter);
         totCnt = (long)goodsDao.selectTotalCount(parameter);
         curPage = (Long)parameter.get("page");
-        lastPage = (long)Math.ceil((double)totCnt/GoodsDao.getListPageSize());
+        lastPage = (long)Math.ceil((double)totCnt/pageSize);
         return result;
     }
     
@@ -111,5 +118,9 @@ public class GoodsService {
     
     public List<GoodsOptionVo> getGoodsOptionList(GoodsVo goodsVo) {
         return goodsOptionDao.selectList(goodsVo);
+    }
+    
+    public List<GoodsImageVo> getGoodsImageList(Long goodsNo) {
+        return goodsImageDao.selectList(goodsNo);
     }
 }

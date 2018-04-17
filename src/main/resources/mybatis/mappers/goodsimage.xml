@@ -8,4 +8,12 @@
         values(null, #{goodsNo}, #{path})
     ]]>
     </insert>
+    
+    <select id="selectListByGoodsNo" parameterType="long" resultType="goodsimagevo">
+    <![CDATA[
+        select no, goods_no as goodsNo, path
+        from goods_image
+        where goods_no = ${_parameter} 
+    ]]>
+    </select>
 </mapper>

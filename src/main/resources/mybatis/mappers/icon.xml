@@ -17,4 +17,13 @@
        order by no asc
    ]]>
    </select>
+   
+   <select id="selectListByGoodsNo" parameterType="long" resultType="iconvo">
+    <![CDATA[
+        select icon.no, icon.name, icon.icon_image as iconImage
+        from goods_icon
+        inner join icon on goods_icon.icon_no = icon.no
+        where goods_icon.goods_no = #{_parameter}
+    ]]>
+    </select>
 </mapper>
