@@ -16,7 +16,7 @@
     
     <select id="selectCartList" parameterType="long" resultType="map">
     <![CDATA[
-        select cart.no, goods.name, goods.price, goods.rate_sale as rateSale, cart.amount, c.optionList, c.nameList, d.path
+        select cart.no, cart.goods_no as goodsNo, goods.name, goods.price, goods.rate_sale as rateSale, cart.amount, c.optionList, c.nameList, d.path
         from goods
         inner join cart on goods.no = cart.goods_no
         left join (select cart_option.cart_no, group_concat(convert(small_option.no, char(8))) as optionList, group_concat(small_option.name) as nameList

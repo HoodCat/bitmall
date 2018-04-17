@@ -15,6 +15,9 @@
         <typeAlias alias="goodsimagevo" type="com.cafe24.bitmall.vo.GoodsImageVo" />
         <typeAlias alias="cartvo" type="com.cafe24.bitmall.vo.CartVo" />
         <typeAlias alias="cartoptionvo" type="com.cafe24.bitmall.vo.CartOptionVo" />
+        <typeAlias alias="ordervo" type="com.cafe24.bitmall.vo.OrderVo" />
+        <typeAlias alias="ordergoodsvo" type="com.cafe24.bitmall.vo.OrderGoodsVo" />
+        <typeAlias alias="ordergoodsoptionvo" type="com.cafe24.bitmall.vo.OrderGoodsOptionVo" />
     </typeAliases>
     <mappers>
         <mapper resource="mybatis/mappers/member.xml" />
@@ -29,5 +32,10 @@
         <mapper resource="mybatis/mappers/goodsimage.xml" />
         <mapper resource="mybatis/mappers/cart.xml" />
         <mapper resource="mybatis/mappers/cart_option.xml" />
+        <mapper resource="mybatis/mappers/backup_goods.xml" />
+        <mapper resource="mybatis/mappers/backup_small_option.xml" />
+        <mapper resource="mybatis/mappers/order.xml" />
+        <mapper resource="mybatis/mappers/ordergoods.xml" />
+        <mapper resource="mybatis/mappers/ordergoodsoption.xml" />
     </mappers>
 </configuration>

@@ -1,7 +1,6 @@
 	package com.cafe24.bitmall.controller;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,19 +9,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.cafe24.bitmall.security.Auth;
-import com.cafe24.bitmall.security.AuthMember;
-import com.cafe24.bitmall.service.CartService;
 import com.cafe24.bitmall.service.GoodsService;
-import com.cafe24.bitmall.vo.MemberVo;
 
 @Controller
 public class MainController {
     @Autowired
     private GoodsService goodsService;
-    
-    @Autowired
-    private CartService cartService;
     
 	@RequestMapping( "" )
 	public String index(
@@ -61,24 +53,6 @@ public class MainController {
 	    return "faq";
 	}
 	
-	@Auth
-	@RequestMapping("order")
-	public String order(
-	        @AuthMember MemberVo authMember,
-	        Model model) {
-	    List<Map<String,Object>> cartList = cartService.getCartList(authMember.getNo());
-	    
-	    if(cartList.size() == 0) {
-	        return "redirect:/";
-	    }
-	    model.addAttribute("cartList", cartList);
-	    model.addAttribute("totPrice", cartService.getTotPrice());
-	    return "order";
-	}
 	
-	@RequestMapping("order/pay")
-    public String orderPay() {
-        return "order_pay";
-    }
 	
 }

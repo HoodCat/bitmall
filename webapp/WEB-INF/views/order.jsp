@@ -327,11 +327,11 @@
             <table width="710" border="0" cellpadding="0" cellspacing="0" class="cmfont">
               <tr>
                 <td align="left" valign="top" width="150" STYLE="padding-left: 45; padding-top: 5">
-                  <font size=2 color="#B90319"><b>배송지 정보</b></font>
+                  <!-- <font size=2 color="#B90319"><b>배송지 정보</b></font> -->
                 </td>
                 <td align="center" width="560">
                   <table width="560" border="0" cellpadding="0" cellspacing="0" class="cmfont">
-                    <tr height="25">
+                    <%-- <tr height="25">
                       <td width="150"><b>주문자정보와 동일</b></td>
                       <td width="20"><b>:</b></td>
                       <td width="390">
@@ -394,13 +394,13 @@
                         <input type="text" name="r_juso" size="50" maxlength="200" value="" class="cmfont1" readonly>
                         <br>
                       </td>
-                    </tr>
+                    </tr> --%>
                     
                     <tr height="50">
                       <td width="150"><b>배송시요구사항</b></td>
                       <td width="20"><b>:</b></td>
                       <td width="390">
-                        <textarea name="o_desc" cols="60" rows="3" class="cmfont1"></textarea>
+                        <textarea name="recommand" cols="60" rows="3" class="cmfont1" style="resize:none;"></textarea>
                       </td>
                     </tr>
                   </table>

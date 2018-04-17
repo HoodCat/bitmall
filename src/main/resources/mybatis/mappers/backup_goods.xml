@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="backupgoods">
+    <insert id="insert" parameterType="goodsvo">
+    <![CDATA[
+        insert into backup_goods
+        values(null, #{code}, #{name}, #{manufacture}, #{price}, #{description}, #{rateSale})
+    ]]>
+      <selectKey keyProperty="no" resultType="long" order="AFTER">
+          <![CDATA[
+              select last_insert_id()
+          ]]>
+      </selectKey>
+    </insert>
+</mapper>

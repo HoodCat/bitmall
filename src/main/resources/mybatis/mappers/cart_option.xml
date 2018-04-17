@@ -8,4 +8,12 @@
     values(null, #{cartNo}, #{smallOptionNo})
     ]]>
     </insert>
+    
+    <select id="selectListByCartNo" parameterType="long" resultType="cartoptionvo">
+    <![CDATA[
+    select no, cart_no as cartNo, small_option_no as smallOptionNo
+    from cart_option
+    where cart_no = #{_parameter}
+    ]]>
+    </select>
 </mapper>

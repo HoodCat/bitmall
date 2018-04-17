@@ -22,8 +22,8 @@ public class CartDao {
         return sqlSession.selectList("cart.selectCartList", memberNo);
     }
     
-    public int deleteAll(Long no) {
-        return sqlSession.delete("cart.deleteByMemberNo", no);
+    public int deleteAll(Long memberNo) {
+        return sqlSession.delete("cart.deleteByMemberNo", memberNo);
     }
     
     public boolean delete(Long no) {
