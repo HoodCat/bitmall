@@ -6,7 +6,7 @@
     <![CDATA[
         insert into goods
         values(null, #{code}, #{name}, #{manufacture}, #{price}, 
-               #{description}, #{rateSale}, #{categoryNo}, #{statusNo})
+               #{description}, #{rateSale}, #{categoryNo}, #{statusNo}, now())
     ]]>
       <selectKey keyProperty="no" resultType="long" order="AFTER">
       <![CDATA[
